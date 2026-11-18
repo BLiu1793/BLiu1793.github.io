@@ -1,0 +1,70 @@
+# Research themes (Research page sections and Home page cards).
+# `publications` lists ids from publications.yaml shown as representative papers.
+- id: moving-target-defense
+  order: 1
+  title: Moving Target Defense for Smart Grids
+  short: Physical-layer defenses that use D-FACTS devices to expose stealthy false data injection attacks.
+  summary: >-
+    Moving target defense (MTD) proactively perturbs transmission-line impedances with
+    distributed flexible AC transmission system (D-FACTS) devices so that false data
+    injection (FDI) attacks built on outdated grid knowledge become detectable. This work
+    covers optimal D-FACTS placement, hidden MTD that attackers cannot easily notice,
+    voltage-stability- and load-margin-constrained MTD, and game-theoretic analysis of MTD
+    against load redistribution attacks.
+  publications:
+    - tsg-2020-dfacts-placement-mtd
+    - tsg-2021-hidden-mtd
+    - ietcps-2021-systematic-mtd
+    - tsg-2022-voltage-stability-mtd
+    - processes-2023-random-hmtd
+    - access-2024-countering-ac-lr
+
+- id: stealthy-attacks
+  order: 2
+  title: Stealthy Data-Driven Attacks and Machine-Learning Detectors
+  short: Data-driven FDI attacks that reveal blind spots of machine-learning detectors, and the defenses that close them.
+  summary: >-
+    Machine-learning detectors are widely proposed for spotting cyberattacks on grid
+    measurements. This work constructs highly stealthy, data-driven FDI attacks that need
+    little or no knowledge of the network model, using matrix and tensor completion, low-rank
+    structure, and generative adversarial networks, to reveal where such detectors fail. It
+    also develops countermeasures, including deep-learning-based detection and
+    graph-theoretic and smart-inverter-enabled meter encoding.
+  publications:
+    - tsg-2024-matrix-completion-fdi
+    - iotj-2024-tensor-completion-fdi
+    - tii-2025-low-rank-fdi
+    - tii-2026-representation-learning-gans
+    - tsg-2026-graph-meter-encoding
+    - jmpce-2025-smart-inverter-meter-encoding
+
+- id: state-estimation
+  order: 3
+  title: State Estimation in Low-Observability Grids
+  short: Matrix- and tensor-completion and deep-learning state estimation with sparse, noisy, or corrupted data.
+  summary: >-
+    Distribution systems often have too few sensors for conventional state estimation. This
+    work develops robust matrix-completion and multi-stage tensor-completion state estimation
+    for low-observability distribution systems, uses random matrix theory to suppress
+    measurement noise, and builds deep-learning state estimators (RNN, GRU, and LSTM) for
+    transmission systems that also support attack detection.
+  publications:
+    - pesgm-2019-robust-mcse
+    - pesgm-2025-enhanced-tc-dsse
+    - kpec-2024-dlse-detection
+
+- id: grid-operation
+  order: 4
+  title: Power System Operation, Planning, and Renewable Integration
+  short: Optimal power flow with FACTS devices, grid-forming converter stability, and solar planning.
+  summary: >-
+    This work covers the modeling, optimization, and simulation of power system operation
+    and planning. It includes an interior-point solver for AC optimal power flow with
+    variable-impedance FACTS devices, the effect of line impedance changes on voltage
+    stability, the stability of grid-forming converters in weak grids, and the planning of
+    solar energy resources.
+  publications:
+    - access-2021-interior-point-acopf-facts
+    - kpec-2020-interior-point-opf-dfacts
+    - naps-2026-composite-synchronization-gfm
+    - mosicom-2026-gfm-small-signal

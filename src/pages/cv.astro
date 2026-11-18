@@ -1,0 +1,69 @@
+---
+import fs from 'node:fs';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import Icon from '../components/Icon.astro';
+import { getCollection } from 'astro:content';
+import { site } from '../config';
+import { visible } from '../lib/content';
+
+const cvPath = `/cv/${site.cv.file}`;
+const hasCv = fs.existsSync(new URL(`../../public${cvPath}`, import.meta.url));
+const positions = (await visible('positions')).sort((a, b) => a.data.order - b.data.order);
+const education = (await getCollection('education')).sort((a, b) => a.data.order - b.data.order);
+---
+<BaseLayout title="CV" description={`Curriculum vitae of ${site.name}: appointments, education, and a downloadable PDF.`}>
+  <PageHeader title="Curriculum Vitae">
+    <div class="mt-5 flex flex-wrap items-center gap-3">
+      {hasCv ? (
+        <>
+          <a class="btn btn-primary" href={cvPath} download><Icon name="download" />Download CV (PDF)</a>
+          <a class="btn" href={cvPath}><Icon name="external" />Open in browser</a>
+          {site.cv.updated && <span class="text-sm text-muted">Last updated {site.cv.updated}</span>}
+        </>
+      ) : (
+        <p class="rounded-lg border border-dashed border-line px-4 py-3 text-muted">The PDF version of the CV will be available here soon.</p>
+      )}
+    </div>
+  </PageHeader>
+
+  <div class="container-page grid gap-12 py-10 lg:grid-cols-2">
+    <section aria-labelledby="appointments-h">
+      <h2 id="appointments-h" class="section-title">Appointments</h2>
+      <ol class="relative space-y-6 border-l border-line pl-6">
+        {positions.map((p) => (
+          <li>
+            <span class="absolute -left-[5px] mt-2 h-2.5 w-2.5 rounded-full bg-accent" aria-hidden="true"></span>
+            <p class="text-sm font-medium text-muted">{p.data.start} – {p.data.end}</p>
+            <p class="font-semibold">{p.data.title}</p>
+            <p class="text-sm">{p.data.organization}{p.data.location && `, ${p.data.location}`}</p>
+          </li>
+        ))}
+      </ol>
+    </section>
+    <section aria-labelledby="education-h">
+      <h2 id="education-h" class="section-title">Education</h2>
+      <ol class="relative space-y-6 border-l border-line pl-6">
+        {education.map((e) => (
+          <li>
+            <span class="absolute -left-[5px] mt-2 h-2.5 w-2.5 rounded-full bg-accent" aria-hidden="true"></span>
+            <p class="text-sm font-medium text-muted">{e.data.year}</p>
+            <p class="font-semibold">{e.data.degree} in {e.data.field}</p>
+            <p class="text-sm">{e.data.institution}{e.data.location && `, ${e.data.location}`}</p>
+            {e.data.note && (
+              <p class="mt-1 text-sm text-muted">{e.data.link ? <a href={e.data.link}>{e.data.note}</a> : e.data.note}</p>
+            )}
+          </li>
+        ))}
+      </ol>
+    </section>
+  </div>
+  {hasCv && (
+    <div class="container-page">
+      <h2 class="section-title">Preview</h2>
+      <object data={cvPath} type="application/pdf" class="h-[80vh] w-full rounded-xl border border-line" aria-label="CV preview">
+        <p>Your browser cannot display the PDF. <a href={cvPath}>Download the CV</a> instead.</p>
+      </object>
+    </div>
+  )}
+</BaseLayout>

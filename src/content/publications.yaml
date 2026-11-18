@@ -1,0 +1,446 @@
+# Publications. Newest papers can go anywhere in the file: the site sorts by year.
+#
+# Required: id (unique, no spaces), type, title, authors, venue, year
+#   type: journal | conference | thesis | preprint
+# Optional: volume, issue, pages, article, status (published | early-access | accepted),
+#   doi, url, pdf, arxiv, openAccess, selected (home page), note, confirmed
+#
+# Metadata below was checked against the publisher (DOI/Crossref) record on 2026-11-18.
+# Your own name is bolded automatically (see selfAuthorNames in src/config.ts).
+
+# ---------------------------------------------------------------- Journal articles
+- id: tsg-2026-graph-meter-encoding
+  type: journal
+  title: Graph-Theoretic Meter Encoding for Detecting False Data Injection Attacks in Partially Measured Transmission Systems
+  authors: [Q. Yang, B. Liu, H. Wu, B. She]
+  venue: IEEE Transactions on Smart Grid
+  volume: 17
+  issue: 6
+  pages: 6505–6521
+  year: 2026
+  doi: 10.1109/TSG.2026.3711001
+
+- id: tii-2026-representation-learning-gans
+  type: journal
+  title: Representation-Learning GANs for Stealthy FDI Attacks on AC Power System State Estimation
+  authors: [Y. Liu, H. Wu, B. Liu]
+  venue: IEEE Transactions on Industrial Informatics
+  year: 2026
+  status: early-access
+  doi: 10.1109/TII.2026.3724102
+
+- id: jmpce-2025-smart-inverter-meter-encoding
+  type: journal
+  title: Smart Inverter Enabled Meter Encoding for Detecting False Data Injection Attacks in Distribution System State Estimation
+  authors: [H. Zhang, B. Liu, H. Wu]
+  venue: Journal of Modern Power Systems and Clean Energy
+  volume: 13
+  issue: 5
+  pages: 1776–1786
+  year: 2025
+  doi: 10.35833/MPCE.2024.000882
+  openAccess: true
+
+- id: tii-2025-low-rank-fdi
+  type: journal
+  title: Low-Rank False Data Injection Attacks With Incomplete Network Information Against Machine-Learning Detectors
+  authors: [B. Liu, H. Wu]
+  venue: IEEE Transactions on Industrial Informatics
+  volume: 21
+  issue: 4
+  pages: 2868–2877
+  year: 2025
+  doi: 10.1109/TII.2024.3513481
+  selected: true
+
+- id: access-2024-countering-ac-lr
+  type: journal
+  title: "Countering AC Load Redistribution Attacks in Smart Grids: The Role of Moving Target Defense in a Defense-Attack Game"
+  authors: [B. Liu, H. Wu, H. Zhang]
+  venue: IEEE Access
+  volume: 12
+  pages: 118060–118071
+  year: 2024
+  doi: 10.1109/ACCESS.2024.3437426
+  openAccess: true
+
+- id: iotj-2024-tensor-completion-fdi
+  type: journal
+  title: Tensor-Completion-Enabled Stealthy False Data Injection Attacks on IoT-Based Smart Grid
+  authors: [B. Liu, Y. Liu, H. Wu]
+  venue: IEEE Internet of Things Journal
+  volume: 11
+  issue: 22
+  pages: 36660–36672
+  year: 2024
+  doi: 10.1109/JIOT.2024.3416839
+  selected: true
+
+- id: tsg-2024-matrix-completion-fdi
+  type: journal
+  title: Matrix-Completion-Based False Data Injection Attacks Against Machine Learning Detectors
+  authors: [B. Liu, H. Wu, Q. Yang, H. Zhang, Y. Liu, Y. Zhang]
+  venue: IEEE Transactions on Smart Grid
+  volume: 15
+  issue: 2
+  pages: 2146–2163
+  year: 2024
+  doi: 10.1109/TSG.2023.3308339
+  selected: true
+
+- id: processes-2023-random-hmtd
+  type: journal
+  title: Random-Enabled Hidden Moving Target Defense against False Data Injection Alert Attackers
+  authors: [B. Liu, H. Wu, Q. Yang, H. Zhang]
+  venue: Processes
+  volume: 11
+  issue: 2
+  article: 348
+  year: 2023
+  doi: 10.3390/pr11020348
+  openAccess: true
+
+- id: tsg-2022-voltage-stability-mtd
+  type: journal
+  title: Voltage Stability Constrained Moving Target Defense Against Net Load Redistribution Attacks
+  authors: [H. Zhang, B. Liu, X. Liu, A. Pahwa, H. Wu]
+  venue: IEEE Transactions on Smart Grid
+  volume: 13
+  issue: 5
+  pages: 3748–3759
+  year: 2022
+  doi: 10.1109/TSG.2022.3170839
+
+- id: access-2021-interior-point-acopf-facts
+  type: journal
+  title: An Interior-Point Solver for AC Optimal Power Flow Considering Variable Impedance-Based FACTS Devices
+  authors: [B. Liu, Q. Yang, H. Zhang, H. Wu]
+  venue: IEEE Access
+  volume: 9
+  pages: 154460–154470
+  year: 2021
+  doi: 10.1109/ACCESS.2021.3128035
+  openAccess: true
+
+- id: tsg-2021-hidden-mtd
+  type: journal
+  title: Optimal Planning and Operation of Hidden Moving Target Defense for Maximal Detection Effectiveness
+  authors: [B. Liu, H. Wu]
+  venue: IEEE Transactions on Smart Grid
+  volume: 12
+  issue: 5
+  pages: 4447–4459
+  year: 2021
+  doi: 10.1109/TSG.2021.3076824
+  selected: true
+
+- id: ietcps-2021-systematic-mtd
+  type: journal
+  title: Systematic Planning of Moving Target Defence for Maximising Detection Effectiveness against False Data Injection Attacks in Smart Grid
+  authors: [B. Liu, H. Wu]
+  venue: "IET Cyber-Physical Systems: Theory & Applications"
+  volume: 6
+  issue: 3
+  pages: 151–163
+  year: 2021
+  doi: 10.1049/cps2.12012
+  openAccess: true
+
+- id: access-2021-cps-attack-defense-review
+  type: journal
+  title: "Smart Grid Cyber-Physical Attack and Defense: A Review"
+  authors: [H. Zhang, B. Liu, H. Wu]
+  venue: IEEE Access
+  volume: 9
+  pages: 29641–29659
+  year: 2021
+  doi: 10.1109/ACCESS.2021.3058628
+  openAccess: true
+
+- id: tsg-2020-dfacts-placement-mtd
+  type: journal
+  title: Optimal D-FACTS Placement in Moving Target Defense Against False Data Injection Attacks
+  authors: [B. Liu, H. Wu]
+  venue: IEEE Transactions on Smart Grid
+  volume: 11
+  issue: 5
+  pages: 4345–4357
+  year: 2020
+  doi: 10.1109/TSG.2020.2977207
+  selected: true
+
+- id: access-2020-prosumer-nanogrids
+  type: journal
+  title: "Prosumer Nanogrids: A Cybersecurity Assessment"
+  authors: [Y. Dafalla, B. Liu, D. A. Hahn, H. Wu, R. Ahmadi, A. G. Bardas]
+  venue: IEEE Access
+  volume: 8
+  pages: 131150–131164
+  year: 2020
+  doi: 10.1109/ACCESS.2020.3009611
+  openAccess: true
+
+- id: ietrpg-2019-data-centre-vpp
+  type: journal
+  title: Risk-Based Stochastic Day-Ahead Operation for Data Centre Virtual Power Plants
+  authors: [H. Zhang, T. Xu, H. Wu, B. Liu, M. N. Faqiry]
+  venue: IET Renewable Power Generation
+  volume: 13
+  issue: 10
+  pages: 1660–1669
+  year: 2019
+  doi: 10.1049/iet-rpg.2018.5736
+
+- id: tie-2017-magnetic-flux-valve
+  type: journal
+  title: "Magnetic Flux Valve: A Magnetoelectric Materials-Based Device for Conversion and Control of Electric Power"
+  authors: [H. Wang, L. Qu, W. Qiao, B. Liu]
+  venue: IEEE Transactions on Industrial Electronics
+  volume: 64
+  issue: 3
+  pages: 2451–2458
+  year: 2017
+  doi: 10.1109/TIE.2016.2597759
+
+- id: pcsee-2015-grid-voltage-synchronization
+  type: journal
+  title: A Fast and Harmonic-Insensitive Grid Voltage Synchronization Method
+  authors: [X. Zhou, H. Chen, B. Liu, L. Li]
+  venue: Proceedings of the CSEE
+  volume: 35
+  issue: 9
+  pages: 2194–2201
+  year: 2015
+  note: In Chinese
+
+# ---------------------------------------------------------------- Conference papers
+- id: mosicom-2026-gfm-small-signal
+  type: conference
+  title: "Improving Small-Signal Stability of Grid-Forming Converters Using Grid-Enhancing Technologies: An Admittance-Based Approach"
+  authors: [R. Siddiq, M. Haque, M. Hossan, S. Ebrahimi, B. Liu]
+  venue: IEEE International Conference on Modelling, Simulation, and Intelligent Computing (MoSICom 2026)
+  year: 2026
+
+- id: naps-2026-economic-performance
+  type: conference
+  title: Redefining Economic Performance Parameters to Reduce Resource Underutilization in Power System
+  authors: [S. Khan, A. Haseeb, A. Nazir, B. Liu]
+  venue: 2026 North American Power Symposium (NAPS)
+  year: 2026
+
+- id: naps-2026-composite-synchronization-gfm
+  type: conference
+  title: Investigating the Performance of Composite Synchronization Control in Grid-Forming Converters Under Weak Grids and Large Disturbances
+  authors: [S. Khan, B. Liu, S. Ebrahimi]
+  venue: 2026 North American Power Symposium (NAPS)
+  year: 2026
+
+- id: naps-2026-unobservable-tc-fdi-pmu
+  type: conference
+  title: Unobservable Tensor-Completion-Enabled False Data Injection Attacks against PMU State Estimation
+  authors: [A. Debnath, B. Liu, H. Wu]
+  venue: 2026 North American Power Symposium (NAPS)
+  year: 2026
+
+- id: naps-2026-fault-power-quality
+  type: conference
+  title: Analysis and Sequence Propagation of Fault-Induced Power Quality Phenomena in Multilevel Distribution System
+  authors: [S. Khan, A. Nazir, A. Haseeb, B. Liu]
+  venue: 2026 North American Power Symposium (NAPS)
+  year: 2026
+
+- id: sgc-2026-rule-aware-prompt
+  type: conference
+  title: A Rule-Aware Prompt Framework for Structured Numeric Reasoning in Smart Grids
+  authors: [Y. Liu, H. Wu, B. Liu]
+  venue: 2026 IEEE International Conference on Communications, Control, and Computing Technologies for Smart Grids (SmartGridComm)
+  year: 2026
+
+- id: pesgm-2025-enhanced-tc-dsse
+  type: conference
+  title: Enhanced Tensor-Completion Distribution System State Estimation Considering Measurement Outliers and Noises
+  authors: [B. Liu, H. Yan, H. Wu, R. Yang, Y. Liu]
+  venue: 2025 IEEE Power & Energy Society General Meeting (PESGM)
+  pages: 1–5
+  year: 2025
+  doi: 10.1109/PESGM52009.2025.11225775
+
+- id: pesgm-2025-transformer-ssl-fdi
+  type: conference
+  title: "Detecting False Data Injection Attacks in Smart Grids: A Transformer-Based Self-Supervised Learning Approach"
+  authors: [Y. Liu, A. Pradeep, T. Stucky, H. Wu, M. Wiegers, B. Liu]
+  venue: 2025 IEEE Power & Energy Society General Meeting (PESGM)
+  pages: 1–5
+  year: 2025
+  doi: 10.1109/PESGM52009.2025.11225553
+
+- id: kpec-2024-dlse-detection
+  type: conference
+  title: Deep-Learning-State-Estimation-Aided Detection Framework against False Data Injection Attacks
+  authors: [B. Liu, Y. Liu, X. Liu, H. Wu]
+  venue: 2024 IEEE Kansas Power and Energy Conference (KPEC)
+  pages: 1–5
+  year: 2024
+  doi: 10.1109/KPEC61529.2024.10676057
+
+- id: kpec-2024-cnn-typhoon-hil
+  type: conference
+  title: Real-Time Simulation of Convolutional Neural Network Detectors for False Data Injection Attacks Using Typhoon HIL
+  authors: [T. Aminov, H. Wu, B. Liu, H. Zhang]
+  venue: 2024 IEEE Kansas Power and Energy Conference (KPEC)
+  pages: 1–6
+  year: 2024
+  doi: 10.1109/KPEC61529.2024.10676276
+
+- id: pesgm-2024-lsgan-fdi
+  type: conference
+  title: False Data Injection Attacks Based on Least Squares Generative Adversarial Networks with Reconstruction Loss
+  authors: [Y. Liu, B. Liu, X. Liu, H. Wu]
+  venue: 2024 IEEE Power & Energy Society General Meeting (PESGM)
+  pages: 1–5
+  year: 2024
+  doi: 10.1109/PESGM51994.2024.10688650
+
+- id: pesgm-2023-random-hmtd
+  type: conference
+  title: Random-Based Hidden Moving Target Defense against Alert False Data Injection Attackers
+  authors: [B. Liu, Q. Yang, H. Zhang, X. Liu, H. Wu]
+  venue: 2023 IEEE Power & Energy Society General Meeting (PESGM)
+  pages: 1–5
+  year: 2023
+  doi: 10.1109/PESGM52003.2023.10253069
+
+- id: kpec-2023-svm-fdi
+  type: conference
+  title: "Data-Driven FDI Attacks: A Stealthy Approach to Subvert SVM Detectors in Power System"
+  authors: [B. Liu, H. Wu, Q. Yang, X. Liu, Y. Liu]
+  venue: 2023 IEEE Kansas Power and Energy Conference (KPEC)
+  pages: 1–6
+  year: 2023
+  doi: 10.1109/KPEC58008.2023.10215462
+
+- id: pesgm-2023-maddpg-hvac
+  type: conference
+  title: A Multi-Agent Deep Deterministic Policy Gradient Method for Multi-Zone HVAC Control
+  authors: [X. Liu, Y. Wu, B. Liu, H. Wu]
+  venue: 2023 IEEE Power & Energy Society General Meeting (PESGM)
+  pages: 1–5
+  year: 2023
+  doi: 10.1109/PESGM52003.2023.10252541
+
+- id: pesgm-2022-hem-thermal-comfort-ev
+  type: conference
+  title: Home Energy Management with Clothing Integrated Thermal Comfort and EV SOC Concern
+  authors: [X. Liu, Y. Wu, H. Zhang, B. Liu, L. Edmonds, H. Wu]
+  venue: 2022 IEEE Power & Energy Society General Meeting (PESGM)
+  pages: 1–5
+  year: 2022
+  doi: 10.1109/PESGM48719.2022.9917003
+
+- id: greentech-2022-load-margin-mtd
+  type: conference
+  title: Load Margin Constrained Moving Target Defense against False Data Injection Attacks
+  authors: [H. Zhang, N. Fulk, B. Liu, L. Edmonds, X. Liu, H. Wu]
+  venue: 2022 IEEE Green Technologies Conference (GreenTech)
+  pages: 51–56
+  year: 2022
+  doi: 10.1109/GreenTech52845.2022.9772024
+
+- id: isgt-2020-net-load-redistribution
+  type: conference
+  title: Net Load Redistribution Attacks on Nodal Voltage Magnitude Estimation in AC Distribution Networks
+  authors: [H. Zhang, B. Liu, H. Wu]
+  venue: 2020 IEEE PES Innovative Smart Grid Technologies Europe (ISGT-Europe)
+  pages: 46–50
+  year: 2020
+  doi: 10.1109/ISGT-Europe47291.2020.9248915
+
+- id: kpec-2020-blockchain-hems
+  type: conference
+  title: Blockchain-Enabled Transactive Home Energy Management Systems in Distribution Networks
+  authors: [L. Edmonds, B. Liu, H. Zhang, C. Scoglio, D. Gruenbacher, H. Wu]
+  venue: 2020 IEEE Kansas Power and Energy Conference (KPEC)
+  pages: 1–5
+  year: 2020
+  doi: 10.1109/KPEC47870.2020.9167602
+
+- id: kpec-2020-interior-point-opf-dfacts
+  type: conference
+  title: An Interior-Point Solver for Optimal Power Flow Problem Considering Distributed FACTS Devices
+  authors: [B. Liu, L. Edmonds, H. Zhang, H. Wu]
+  venue: 2020 IEEE Kansas Power and Energy Conference (KPEC)
+  pages: 1–5
+  year: 2020
+  doi: 10.1109/KPEC47870.2020.9167620
+
+- id: pesgm-2019-robust-mcse
+  type: conference
+  title: Robust Matrix Completion State Estimation in Distribution Systems
+  authors: [B. Liu, H. Wu, Y. Zhang, R. Yang, A. Bernstein]
+  venue: 2019 IEEE Power & Energy Society General Meeting (PESGM)
+  pages: 1–5
+  year: 2019
+  doi: 10.1109/PESGM40551.2019.8973881
+
+- id: pesgm-2018-hidden-mtd-reconfiguration
+  type: conference
+  title: Hidden Moving Target Defense against False Data Injection in Distribution Network Reconfiguration
+  authors: [B. Liu, H. Wu, A. Pahwa, F. Ding, E. Ibrahim, T. Liu]
+  venue: 2018 IEEE Power & Energy Society General Meeting (PESGM)
+  pages: 1–5
+  year: 2018
+  doi: 10.1109/PESGM.2018.8586470
+
+- id: cyber-2015-predictive-current-pmsm
+  type: conference
+  title: A Robust Predictive Current Control for PMSM Based on Extended State Observer
+  authors: [H. Chen, J. Qu, B. Liu, H. Xu]
+  venue: 2015 IEEE International Conference on Cyber Technology in Automation, Control, and Intelligent Systems (CYBER)
+  pages: 1698–1703
+  year: 2015
+  doi: 10.1109/CYBER.2015.7288202
+
+- id: cyber-2015-adrc-sliding-mode-pmsm
+  type: conference
+  title: The Compensated Active Disturbance Rejection Controller Based on Sliding Mode Control for PMSM
+  authors: [H. Chen, H. Xu, B. Liu, B. Sun]
+  venue: 2015 IEEE International Conference on Cyber Technology in Automation, Control, and Intelligent Systems (CYBER)
+  pages: 240–245
+  year: 2015
+  doi: 10.1109/CYBER.2015.7287942
+
+- id: ccc-2014-pmsm-kalman
+  type: conference
+  title: Low Speed Control for PMSM Based on Reduced-Order Adaptive Kalman Filter
+  authors: [H. Chen, B. Liu, Y. Qu, X. Zhou]
+  venue: 33rd Chinese Control Conference (CCC)
+  pages: 7959–7963
+  year: 2014
+  doi: 10.1109/ChiCC.2014.6896330
+
+- id: cyber-2014-fuzzy-smith
+  type: conference
+  title: The Improved Fuzzy-Smith Compensator Based on Modeling Error for Network Control System
+  authors: [H. Chen, Y. Qu, X. Zhou, B. Liu]
+  venue: 2014 IEEE International Conference on Cyber Technology in Automation, Control, and Intelligent Systems (CYBER)
+  pages: 106–110
+  year: 2014
+  doi: 10.1109/CYBER.2014.6917444
+
+# ---------------------------------------------------------------- Thesis
+- id: phd-2021-dissertation
+  type: thesis
+  title: Optimal Planning and Operation of Moving Target Defense for Detecting False Data Injection Attacks in Smart Grids
+  authors: [B. Liu]
+  venue: Ph.D. dissertation, Kansas State University
+  year: 2021
+  url: https://hdl.handle.net/2097/41409
+
+# ---------------------------------------------------------------- Preprints
+- id: arxiv-2026-noise-deficiency-signatures
+  type: preprint
+  title: Exposing Noise-Deficiency Signatures of Deep Learning-Based False Data Injection Attacks Through AC State Estimation
+  authors: [Y. Liu, H. Wu, B. Liu]
+  venue: arXiv preprint
+  year: 2026
+  arxiv: "2610.31799"

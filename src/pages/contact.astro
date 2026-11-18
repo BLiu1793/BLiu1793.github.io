@@ -1,0 +1,66 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import Icon from '../components/Icon.astro';
+import { site } from '../config';
+
+const profiles = site.profiles.filter((p) => p.show);
+---
+<BaseLayout title="Contact" description={`Contact information for ${site.name}, ${site.jobTitle} at ${site.institution}.`}>
+  <PageHeader title="Contact" />
+  <div class="container-page grid gap-10 py-10 md:grid-cols-2">
+    <section aria-labelledby="reach-h">
+      <h2 id="reach-h" class="section-title">Get in touch</h2>
+      <dl class="space-y-5">
+        <div>
+          <dt class="text-sm font-semibold uppercase tracking-wide text-muted">Email</dt>
+          <dd class="mt-1"><a href={`mailto:${site.email}`} class="inline-flex items-center gap-2"><Icon name="mail" />{site.email}</a></dd>
+        </div>
+        <div>
+          <dt class="text-sm font-semibold uppercase tracking-wide text-muted">Office</dt>
+          <dd class="mt-1">{site.office}</dd>
+        </div>
+        <div>
+          <dt class="text-sm font-semibold uppercase tracking-wide text-muted">Mailing address</dt>
+          <dd class="mt-1">
+            <address class="not-italic">
+              {site.name}<br />
+              {site.jobTitle}<br />
+              {site.unit}<br />
+              {site.address.map((line) => <>{line}<br /></>)}
+            </address>
+          </dd>
+        </div>
+      </dl>
+    </section>
+
+    <section aria-labelledby="profiles-h">
+      <h2 id="profiles-h" class="section-title">Profiles</h2>
+      <ul class="space-y-3">
+        {profiles.map((p) => (
+          <li>
+            <a href={p.url} class="inline-flex items-center gap-2">
+              <Icon name={p.id === 'scholar' ? 'scholar' : p.id === 'orcid' ? 'orcid' : p.id === 'linkedin' ? 'linkedin' : 'external'} />
+              {p.label}
+            </a>
+          </li>
+        ))}
+        <li>
+          <a href={site.institutionUrl} class="inline-flex items-center gap-2"><Icon name="location" />{site.institution}</a>
+        </li>
+      </ul>
+    </section>
+  </div>
+
+  <section id="about-this-site" class="container-page scroll-mt-24" aria-labelledby="about-h">
+    <div class="card max-w-3xl">
+      <h2 id="about-h" class="mb-2 text-xl font-semibold">About this site</h2>
+      <p class="text-sm">
+        This website was {site.aiAttribution.charAt(0).toLowerCase() + site.aiAttribution.slice(1)}. Claude generated the site's
+        code and structure and drafted its first text from Dr. Liu's CV, Google Scholar profile, and publisher (DOI)
+        records. Dr. Liu reviewed and approved all content and is responsible for it. The site is built with
+        Astro and Tailwind CSS.
+      </p>
+    </div>
+  </section>
+</BaseLayout>

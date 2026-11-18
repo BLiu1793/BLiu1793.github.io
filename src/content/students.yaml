@@ -1,0 +1,18 @@
+# Research students. Only list people who have agreed to appear on the website.
+#   degree: Ph.D. | M.S. | B.S. | Postdoc | Visiting
+#   status: current | alumni
+#   now: current position of an alumnus - add ONLY with that person's permission
+- id: shahid-nawaz-khan
+  name: Shahid Nawaz Khan
+  degree: Ph.D.
+  status: current
+
+- id: yang-long
+  name: Yang Long
+  degree: Ph.D.
+  status: current
+
+- id: akash-debnath
+  name: Akash Debnath
+  degree: M.S.
+  status: alumni

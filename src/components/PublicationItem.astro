@@ -1,0 +1,55 @@
+---
+import type { Publication } from '../lib/content';
+import { doiUrl } from '../lib/content';
+import { site } from '../config';
+import Icon from './Icon.astro';
+
+interface Props { pub: Publication; compact?: boolean }
+const { pub, compact = false } = Astro.props;
+const p = pub.data;
+const self = new Set(site.selfAuthorNames);
+
+const details = [
+  p.volume && `vol. ${p.volume}`,
+  p.issue && `no. ${p.issue}`,
+  p.article && `Art. no. ${p.article}`,
+  p.pages && `pp. ${p.pages}`,
+  String(p.year),
+].filter(Boolean).join(', ');
+
+// "A, B, and C" / "A and B"
+const n = p.authors.length;
+const separator = (i: number) => (i < n - 2 ? ', ' : i === n - 2 ? (n > 2 ? ', and ' : ' and ') : '');
+
+const typeLabel ={ journal: 'Journal', conference: 'Conference', thesis: 'Thesis', preprint: 'Preprint' }[p.type];
+const statusLabel = p.status === 'early-access' ? 'Early access' : p.status === 'accepted' ? 'Accepted' : null;
+const searchText = [p.title, p.authors.join(' '), p.venue, p.year].join(' ').toLowerCase();
+---
+<li class="pub group" data-type={p.type} data-search={searchText}>
+  <p class="text-fg">
+    {p.authors.map((a, i) => (
+      <>{self.has(a) ? <strong class="font-semibold">{a}</strong> : a}{separator(i)}</>
+    ))}{', “'}<span class="font-medium">{p.title}</span>{',” '}{p.type === 'conference' ? 'in ' : ''}<em>{p.venue}</em>{`, ${details}.`}{p.note ? <span class="text-muted">{` (${p.note})`}</span> : ''}
+  </p>
+  {!compact && (
+    <div class="mt-2 flex flex-wrap items-center gap-2">
+      <span class="chip">{typeLabel}</span>
+      {statusLabel && <span class="chip">{statusLabel}</span>}
+      {p.doi && (
+        <a class="link-pill" href={doiUrl(p.doi)}>DOI<span class="sr-only">: {p.doi}</span></a>
+      )}
+      {p.openAccess && p.doi && (
+        <a class="link-pill" href={doiUrl(p.doi)}>Open access<span class="sr-only"> version of “{p.title}”</span></a>
+      )}
+      {p.pdf && (
+        <a class="link-pill" href={p.pdf}><Icon name="file" class="h-3.5 w-3.5" />PDF<span class="sr-only"> of “{p.title}”</span></a>
+      )}
+      {p.arxiv && (
+        <a class="link-pill" href={`https://arxiv.org/abs/${p.arxiv}`}>arXiv:{p.arxiv}</a>
+      )}
+      {p.url && (
+        <a class="link-pill" href={p.url}>Full text<span class="sr-only"> of “{p.title}”</span></a>
+      )}
+    </div>
+  )}
+</li>

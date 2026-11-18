@@ -1,0 +1,17 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { monthYear } from '../lib/content';
+interface Props { items: CollectionEntry<'news'>[] }
+const { items } = Astro.props;
+---
+<ul class="space-y-4">
+  {items.map((n) => (
+    <li class="grid grid-cols-[5.5rem_1fr] gap-3">
+      <time datetime={n.data.date.toISOString().slice(0, 10)} class="pt-0.5 text-sm font-medium text-muted">{monthYear(n.data.date)}</time>
+      <p>
+        {n.data.title}
+        {n.data.link && <> <a href={n.data.link}>Read more<span class="sr-only"> about this news item</span></a></>}
+      </p>
+    </li>
+  ))}
+</ul>

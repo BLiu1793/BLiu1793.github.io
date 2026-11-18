@@ -1,0 +1,89 @@
+# Talks and presentations. kind: invited | conference | poster ; date: YYYY-MM or YYYY-MM-DD
+- id: talk-2025-02-cyser
+  kind: invited
+  date: 2025-02-11
+  title: "Are Machine Learning Detectors Sufficient? Exploring Cyberattacks and Defense Strategies in Smart Grids"
+  event: VICEROY Northwest Institute for Cybersecurity Education and Research (CySER) Seminar, Washington State University
+  link: https://cyser.wsu.edu/seminars/
+
+- id: talk-2025-02-pes-big-data
+  kind: invited
+  date: 2025-02
+  title: "Machine Learning for Power System Cybersecurity: Detecting and Defending Against Stealthy False Data Injection Attacks"
+  event: IEEE PES Big Data Tutorial Series
+  confirmed: false
+
+- id: talk-2024-11-esic
+  kind: invited
+  date: 2024-11-12
+  title: "Enhancing Cybersecurity in Smart Grids: Modeling Stealthy Cyberattacks and Implementing Moving Target Defense"
+  event: ESIC Power Seminar Series, Washington State University
+  link: https://esic.wsu.edu/2024/11/12/enhancing-cybersecurity-in-smart-grids-modeling-stealthy-cyberattacks-and-implementing-moving-target-defense/
+
+- id: talk-2024-04-njit
+  kind: invited
+  date: 2024-04
+  title: "Enhancing Cybersecurity in Smart Grids: Modeling Stealthy Cyberattacks and Implementing Moving Target Defense"
+  event: New Jersey Institute of Technology
+
+- id: talk-2024-04-sfsu
+  kind: invited
+  date: 2024-04
+  title: "Enhancing Cybersecurity in Smart Grids: Modeling Stealthy Cyberattacks and Implementing Moving Target Defense"
+  event: San Francisco State University
+
+- id: pres-2025-07-pesgm
+  kind: conference
+  date: 2025-07
+  title: Enhanced Tensor-Completion Distribution System State Estimation Considering Measurement Outliers and Noises
+  event: 2025 IEEE Power & Energy Society General Meeting
+  location: Austin, TX, USA
+
+- id: pres-2024-04-kpec
+  kind: conference
+  date: 2024-04
+  title: Deep-Learning-State-Estimation-Aided Detection Framework against False Data Injection Attacks
+  event: 2024 IEEE Kansas Power and Energy Conference
+  location: Manhattan, KS, USA
+
+- id: pres-2023-07-pesgm
+  kind: conference
+  date: 2023-07
+  title: Random-Based Hidden Moving Target Defense against Alert False Data Injection Attackers (presentation and poster)
+  event: 2023 IEEE Power & Energy Society General Meeting
+  location: Orlando, FL, USA
+
+- id: pres-2023-04-kpec
+  kind: conference
+  date: 2023-04
+  title: "Data-Driven FDI Attacks: A Stealthy Approach to Subvert SVM Detectors in Power System"
+  event: 2023 IEEE Kansas Power and Energy Conference
+  location: Manhattan, KS, USA
+
+- id: pres-2020-10-kpec
+  kind: conference
+  date: 2020-10
+  title: An Interior-Point Solver for Optimal Power Flow Problem Considering Distributed FACTS Devices
+  event: 2020 IEEE Kansas Power and Energy Conference
+  location: Manhattan, KS, USA
+
+- id: pres-2018-10-cansec
+  kind: conference
+  date: 2018-10
+  title: Hidden Moving Target Defense against False Data Injection Attacks in Distribution Network Reconfiguration
+  event: Central Area Networking and Security Workshop (CANSec)
+  location: Manhattan, KS, USA
+
+- id: poster-2018-09-sos
+  kind: poster
+  date: 2018-09
+  title: Hidden Moving Target Defense against False Data Injection Attacks in Distribution Network Reconfiguration
+  event: "Science of Security: Securing the Internet of Things Workshop"
+  location: Lawrence, KS, USA
+
+- id: poster-2018-08-pesgm
+  kind: poster
+  date: 2018-08
+  title: Hidden Moving Target Defense against False Data Injection Attacks in Distribution Network Reconfiguration
+  event: 2018 IEEE Power & Energy Society General Meeting
+  location: Portland, OR, USA

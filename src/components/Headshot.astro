@@ -1,0 +1,27 @@
+---
+// Shows src/assets/headshot.(jpg|jpeg|png|webp) if present, otherwise initials.
+import { Image } from 'astro:assets';
+import { site } from '../config';
+interface Props { class?: string }
+const { class: cls = '' } = Astro.props;
+const found = Object.values(
+  import.meta.glob<{ default: ImageMetadata }>('../assets/headshot.{jpg,jpeg,png,webp}', { eager: true }),
+)[0];
+const initials = site.name.split(' ').map((p) => p[0]).join('');
+---
+{found ? (
+  <Image
+    src={found.default}
+    alt={`Portrait of ${site.name}`}
+    widths={[240, 480]}
+    sizes="240px"
+    class:list={['aspect-square rounded-2xl object-cover', cls]}
+    loading="eager"
+  />
+) : (
+  <div
+    class:list={['flex aspect-square items-center justify-center rounded-2xl bg-accent-soft font-serif text-6xl font-semibold text-accent', cls]}
+    role="img"
+    aria-label={`${site.name} (photo coming soon)`}
+  >{initials}</div>
+)}

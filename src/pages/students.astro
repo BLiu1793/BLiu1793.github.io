@@ -1,0 +1,51 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import { site } from '../config';
+import { visible } from '../lib/content';
+
+const students = await visible('students');
+const degreeLabel = { 'Ph.D.': 'Ph.D. student', 'M.S.': 'M.S. student', 'B.S.': 'Undergraduate researcher', Postdoc: 'Postdoctoral researcher', Visiting: 'Visiting scholar' } as const;
+const alumniLabel = { 'Ph.D.': 'Ph.D.', 'M.S.': 'M.S.', 'B.S.': 'B.S.', Postdoc: 'Postdoc', Visiting: 'Visiting scholar' } as const;
+const current = students.filter((s) => s.data.status === 'current');
+const alumni = students.filter((s) => s.data.status === 'alumni');
+---
+<BaseLayout title="Students" description={`Current and former research students advised by ${site.name}.`}>
+  <PageHeader title="Students" lead="Graduate students advised by Dr. Liu." />
+  <div class="container-page py-10">
+    {current.length > 0 && (
+      <section class="mb-12" aria-labelledby="current-h">
+        <h2 id="current-h" class="section-title">Current students</h2>
+        <ul class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {current.map((s) => (
+            <li class="card">
+              <p class="font-semibold">{s.data.link ? <a href={s.data.link}>{s.data.name}</a> : s.data.name}</p>
+              <p class="text-sm text-muted">{degreeLabel[s.data.degree]}{s.data.years && ` · ${s.data.years}`}</p>
+              {s.data.topic && <p class="mt-2 text-sm">{s.data.topic}</p>}
+            </li>
+          ))}
+        </ul>
+      </section>
+    )}
+    {alumni.length > 0 && (
+      <section class="mb-12" aria-labelledby="alumni-h">
+        <h2 id="alumni-h" class="section-title">Former students</h2>
+        <ul class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {alumni.map((s) => (
+            <li class="card">
+              <p class="font-semibold">{s.data.name}</p>
+              <p class="text-sm text-muted">{alumniLabel[s.data.degree]}{s.data.years && ` · ${s.data.years}`}</p>
+              {s.data.now && <p class="mt-2 text-sm">Now: {s.data.now}</p>}
+            </li>
+          ))}
+        </ul>
+      </section>
+    )}
+    {site.features.showProspectiveStudents && (
+      <section class="card max-w-3xl" aria-labelledby="prospective-h">
+        <h2 id="prospective-h" class="mb-2 text-xl font-semibold">Prospective students</h2>
+        <p>{site.prospectiveStudents} <a href={`mailto:${site.email}`}>{site.email}</a></p>
+      </section>
+    )}
+  </div>
+</BaseLayout>

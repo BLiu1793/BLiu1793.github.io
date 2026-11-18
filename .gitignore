@@ -1,0 +1,17 @@
+# build output & dependencies
+dist/
+.astro/
+node_modules/
+
+# local-only material (never published)
+source_materials/
+notes/
+AGENTS.md
+CLAUDE.md
+*:Zone.Identifier
+
+# editor / OS
+.DS_Store
+.vscode/*
+!.vscode/extensions.json
+npm-debug.log*

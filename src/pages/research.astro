@@ -1,0 +1,186 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import PublicationItem from '../components/PublicationItem.astro';
+import { getCollection, render } from 'astro:content';
+import { site } from '../config';
+import { getPublications, visible, formatYearMonth } from '../lib/content';
+
+const themes = (await getCollection('research')).sort((a, b) => a.data.order - b.data.order);
+const pubs = await getPublications();
+const pubById = new Map(pubs.map((p) => [p.id, p]));
+
+const projects = (await visible('projects')).sort((a, b) => a.data.order - b.data.order);
+const projectBodies = new Map(
+  await Promise.all(projects.map(async (p) => [p.id, (await render(p)).Content] as const)),
+);
+const current = projects.filter((p) => p.data.status === 'current');
+const previous = projects.filter((p) => p.data.status === 'previous');
+const money = (n?: number) =>
+  site.features.showFundingAmounts && n ? ` · $${n.toLocaleString('en-US')}` : '';
+
+const service = (await visible('service')).sort((a, b) => a.data.order - b.data.order);
+const editorial = service.filter((s) => s.data.category === 'editorial');
+const committees = service.filter((s) => s.data.category === 'committee');
+const journalReviewer = service.filter((s) => s.data.category === 'journal-reviewer');
+const confReviewer = service.filter((s) => s.data.category === 'conference-reviewer');
+
+const talks = (await visible('talks')).sort((a, b) => b.data.date.localeCompare(a.data.date));
+const invited = talks.filter((t) => t.data.kind === 'invited');
+const presentations = talks.filter((t) => t.data.kind !== 'invited');
+const awards = await visible('awards');
+---
+<BaseLayout title="Research" description="Research on smart grid cyber-physical security, moving target defense, stealthy data-driven attacks, and state estimation.">
+  <PageHeader
+    title="Research"
+    lead="Dr. Liu's research leverages power systems, graph theory, optimization, machine learning, and state estimation to identify vulnerabilities in smart grids and to develop defenses against cyberattacks."
+  >
+    <ul class="mt-6 flex flex-wrap gap-2" aria-label="Research interests">
+      {site.interests.map((i) => <li class="chip bg-bg text-sm">{i}</li>)}
+    </ul>
+  </PageHeader>
+
+  <div class="container-page py-12">
+    <nav aria-label="On this page" class="mb-12 text-sm">
+      <ul class="flex flex-wrap gap-x-5 gap-y-2">
+        {themes.map((t) => <li><a href={`#${t.id}`}>{t.data.title}</a></li>)}
+        <li><a href="#funding">Funded projects</a></li>
+        <li><a href="#service">Service</a></li>
+        <li><a href="#talks">Talks</a></li>
+        <li><a href="#awards">Awards</a></li>
+      </ul>
+    </nav>
+
+    {themes.map((t) => {
+      const reps = t.data.publications.map((id) => pubById.get(id)).filter((p) => p !== undefined);
+      return (
+        <section id={t.id} class="mb-14 scroll-mt-24" aria-labelledby={`${t.id}-h`}>
+          <h2 id={`${t.id}-h`} class="section-title">{t.data.title}</h2>
+          <p class="max-w-3xl">{t.data.summary}</p>
+          {reps.length > 0 && (
+            <>
+              <h3 class="mt-6 mb-3 font-sans text-sm font-semibold uppercase tracking-wide text-muted">Representative publications</h3>
+              <ol class="space-y-3 text-sm">
+                {reps.map((p) => <PublicationItem pub={p} compact />)}
+              </ol>
+            </>
+          )}
+        </section>
+      );
+    })}
+
+    <section id="funding" class="mb-14 scroll-mt-24" aria-labelledby="funding-h">
+      <h2 id="funding-h" class="section-title">Funded projects</h2>
+      {current.length > 0 && (
+        <>
+          <h3 class="mb-3 font-sans text-sm font-semibold uppercase tracking-wide text-muted">Current</h3>
+          <ul class="mb-8 grid gap-4 md:grid-cols-2">
+            {current.map((p) => {
+              const Body = projectBodies.get(p.id)!;
+              return (
+                <li class="card">
+                  <p class="font-semibold">{p.data.link ? <a href={p.data.link}>{p.data.title}</a> : p.data.title}</p>
+                  <p class="mt-1 text-sm text-muted">{p.data.role} · {p.data.sponsor} · {p.data.period}{money(p.data.amount)}</p>
+                  <div class="prose-lite mt-2 text-sm"><Body /></div>
+                </li>
+              );
+            })}
+          </ul>
+        </>
+      )}
+      {previous.length > 0 && (
+        <>
+          <h3 class="mb-3 font-sans text-sm font-semibold uppercase tracking-wide text-muted">Previous (Kansas State University)</h3>
+          <ul class="grid gap-4 md:grid-cols-2">
+            {previous.map((p) => {
+              const Body = projectBodies.get(p.id)!;
+              return (
+                <li class="card">
+                  <p class="font-semibold">{p.data.link ? <a href={p.data.link}>{p.data.title}</a> : p.data.title}</p>
+                  <p class="mt-1 text-sm text-muted">{p.data.role} · {p.data.sponsor} · {p.data.period}{money(p.data.amount)}</p>
+                  <div class="prose-lite mt-2 text-sm"><Body /></div>
+                </li>
+              );
+            })}
+          </ul>
+        </>
+      )}
+    </section>
+
+    <section id="service" class="mb-14 scroll-mt-24" aria-labelledby="service-h">
+      <h2 id="service-h" class="section-title">Professional service</h2>
+      <div class="grid gap-8 md:grid-cols-2">
+        {editorial.length > 0 && (
+          <div>
+            <h3 class="mb-3 text-lg font-semibold">Editorial</h3>
+            <ul class="space-y-3">
+              {editorial.map((s) => (
+                <li>
+                  <span class="font-medium">{s.data.role}</span>, {s.data.link ? <a href={s.data.link}><em>{s.data.venue}</em></a> : <em>{s.data.venue}</em>}
+                  {s.data.detail && <span class="block text-sm text-muted">{s.data.detail}</span>}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+        {committees.length > 0 && (
+          <div>
+            <h3 class="mb-3 text-lg font-semibold">Conference committees</h3>
+            <ul class="space-y-3">
+              {committees.map((s) => (
+                <li>
+                  <span class="font-medium">{s.data.role}</span>, {s.data.link ? <a href={s.data.link}>{s.data.venue}</a> : s.data.venue}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </div>
+      <details class="mt-6 rounded-xl border border-line p-4">
+        <summary class="cursor-pointer font-medium">Reviewer for {journalReviewer.length} journals and {confReviewer.length} conferences</summary>
+        <div class="mt-4 grid gap-6 text-sm md:grid-cols-2">
+          <div>
+            <h3 class="mb-2 font-sans font-semibold">Journals</h3>
+            <ul class="list-disc space-y-1 pl-5">{journalReviewer.map((s) => <li><em>{s.data.venue}</em></li>)}</ul>
+          </div>
+          <div>
+            <h3 class="mb-2 font-sans font-semibold">Conferences</h3>
+            <ul class="list-disc space-y-1 pl-5">{confReviewer.map((s) => <li>{s.data.venue}</li>)}</ul>
+          </div>
+        </div>
+      </details>
+    </section>
+
+    <section id="talks" class="mb-14 scroll-mt-24" aria-labelledby="talks-h">
+      <h2 id="talks-h" class="section-title">Invited talks</h2>
+      <ul class="space-y-4">
+        {invited.map((t) => (
+          <li class="grid gap-1 sm:grid-cols-[6rem_1fr] sm:gap-4">
+            <span class="text-sm font-medium text-muted">{formatYearMonth(t.data.date)}</span>
+            <span>“{t.data.title}”, {t.data.link ? <a href={t.data.link}>{t.data.event}</a> : t.data.event}</span>
+          </li>
+        ))}
+      </ul>
+      <details class="mt-6 rounded-xl border border-line p-4">
+        <summary class="cursor-pointer font-medium">Conference presentations and posters ({presentations.length})</summary>
+        <ul class="mt-4 space-y-3 text-sm">
+          {presentations.map((t) => (
+            <li class="grid gap-1 sm:grid-cols-[6rem_1fr] sm:gap-4">
+              <span class="font-medium text-muted">{formatYearMonth(t.data.date)}</span>
+              <span>{t.data.kind === 'poster' ? 'Poster' : 'Presentation'}: “{t.data.title}”, {t.data.event}{t.data.location && `, ${t.data.location}`}</span>
+            </li>
+          ))}
+        </ul>
+      </details>
+    </section>
+
+    <section id="awards" class="scroll-mt-24" aria-labelledby="awards-h">
+      <h2 id="awards-h" class="section-title">Awards</h2>
+      <ul class="space-y-2">
+        {awards.map((a) => (
+          <li><span class="font-medium">{a.data.title}</span>, {a.data.organization} ({a.data.years})</li>
+        ))}
+      </ul>
+    </section>
+  </div>
+</BaseLayout>

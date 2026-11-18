@@ -1,0 +1,13 @@
+---
+import { site } from '../config';
+const year = new Date().getFullYear();
+const updated = new Date().toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
+---
+<footer class="mt-20 border-t border-line">
+  <div class="container-page flex flex-col gap-2 py-8 text-sm text-muted sm:flex-row sm:items-center sm:justify-between">
+    <p>© {year} {site.name} · {site.institution}</p>
+    <p>
+      {site.aiAttribution} · <a href="/contact/#about-this-site">About this site</a> · Updated {updated}
+    </p>
+  </div>
+</footer>

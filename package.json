@@ -1,0 +1,28 @@
+{
+  "name": "academic-website",
+  "type": "module",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Personal academic website of Bo Liu (Astro + Tailwind CSS).",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "validate": "html-validate \"dist/**/*.html\" && linkinator dist --recurse --check-fragments --skip \"^https?://(?!localhost|127\\.0\\.0\\.1)\"",
+    "check": "astro check && astro build && npm run validate",
+    "check:external": "linkinator dist --recurse --timeout 20000 --retry"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.7.6",
+    "@tailwindcss/vite": "^4.3.5",
+    "astro": "^7.4.13",
+    "tailwindcss": "^4.3.5"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.12",
+    "html-validate": "^11.21.1",
+    "linkinator": "^8.1.0",
+    "typescript": "^6.0.3"
+  }
+}

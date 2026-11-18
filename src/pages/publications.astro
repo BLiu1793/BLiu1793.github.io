@@ -1,0 +1,98 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import PublicationItem from '../components/PublicationItem.astro';
+import { site } from '../config';
+import { getPublications } from '../lib/content';
+
+const pubs = await getPublications();
+const years = [...new Set(pubs.map((p) => p.data.year))];
+const count = (t: string) => pubs.filter((p) => p.data.type === t).length;
+const filters = [
+  { key: 'all', label: `All (${pubs.length})` },
+  { key: 'journal', label: `Journal (${count('journal')})` },
+  { key: 'conference', label: `Conference (${count('conference')})` },
+  { key: 'other', label: `Thesis & preprints (${count('thesis') + count('preprint')})` },
+];
+const scholar = site.profiles.find((p) => p.id === 'scholar');
+---
+<BaseLayout title="Publications" description={`Journal articles and conference papers by ${site.name} on smart grid cybersecurity, moving target defense, and state estimation.`}>
+  <PageHeader title="Publications">
+    <p class="mt-3 max-w-3xl text-lg text-muted">
+      {count('journal')} journal articles and {count('conference')} conference papers, newest first.
+      {scholar && <>Citation counts are on <a href={scholar.url}>Google Scholar</a>.</>}
+    </p>
+  </PageHeader>
+
+  <div class="container-page py-10">
+    <!-- Filters are shown only when JavaScript is available; without it every paper is listed. -->
+    <div id="pub-controls" class="mb-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between" hidden>
+      <div role="group" aria-label="Filter by type" class="flex flex-wrap gap-2">
+        {filters.map((f, i) => (
+          <button type="button" class="btn filter-btn" data-filter={f.key} aria-pressed={i === 0 ? 'true' : 'false'}>{f.label}</button>
+        ))}
+      </div>
+      <div class="sm:w-72">
+        <label for="pub-search" class="sr-only">Search publications</label>
+        <input id="pub-search" type="search" placeholder="Search title, author, venue…" autocomplete="off"
+          class="w-full rounded-lg border border-line bg-bg px-3 py-2 text-sm text-fg placeholder:text-muted" />
+      </div>
+    </div>
+    <p id="pub-status" class="sr-only" aria-live="polite"></p>
+
+    {years.map((y) => (
+      <section class="pub-year mb-10" aria-labelledby={`y${y}`}>
+        <h2 id={`y${y}`} class="mb-4 border-b border-line pb-2 font-sans text-xl font-semibold">{y}</h2>
+        <ol class="space-y-6">
+          {pubs.filter((p) => p.data.year === y).map((p) => <PublicationItem pub={p} />)}
+        </ol>
+      </section>
+    ))}
+    <p id="pub-empty" class="text-muted" hidden>No publications match your search.</p>
+  </div>
+</BaseLayout>
+
+<script>
+  const controls = document.getElementById('pub-controls')!;
+  const search = document.getElementById('pub-search') as HTMLInputElement;
+  const status = document.getElementById('pub-status')!;
+  const empty = document.getElementById('pub-empty')!;
+  const buttons = [...document.querySelectorAll<HTMLButtonElement>('.filter-btn')];
+  const items = [...document.querySelectorAll<HTMLElement>('.pub')];
+  const groups = [...document.querySelectorAll<HTMLElement>('.pub-year')];
+  let filter = 'all';
+  controls.hidden = false;
+
+  const matchesType = (t: string) =>
+    filter === 'all' || t === filter || (filter === 'other' && (t === 'thesis' || t === 'preprint'));
+
+  function apply() {
+    const terms = search.value.toLowerCase().trim().split(/\s+/).filter(Boolean);
+    let shown = 0;
+    for (const el of items) {
+      const ok = matchesType(el.dataset.type!) && terms.every((w) => el.dataset.search!.includes(w));
+      el.hidden = !ok;
+      if (ok) shown++;
+    }
+    for (const g of groups) g.hidden = !g.querySelector('.pub:not([hidden])');
+    empty.hidden = shown > 0;
+    status.textContent = `${shown} publication${shown === 1 ? '' : 's'} shown`;
+  }
+
+  for (const b of buttons) {
+    b.addEventListener('click', () => {
+      filter = b.dataset.filter!;
+      for (const o of buttons) o.setAttribute('aria-pressed', String(o === b));
+      apply();
+    });
+  }
+  search.addEventListener('input', apply);
+</script>
+
+<style>
+  .filter-btn[aria-pressed='true'] {
+    border-color: var(--accent);
+    background: var(--accent);
+    color: var(--accent-fg);
+  }
+</style>

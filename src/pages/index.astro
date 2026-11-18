@@ -1,0 +1,73 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Headshot from '../components/Headshot.astro';
+import Icon from '../components/Icon.astro';
+import NewsList from '../components/NewsList.astro';
+import PublicationItem from '../components/PublicationItem.astro';
+import { Content as Bio } from '../content/bio.md';
+import { site } from '../config';
+import { getNews, getPublications } from '../lib/content';
+import { getCollection } from 'astro:content';
+
+const news = (await getNews()).slice(0, 5);
+const selected = (await getPublications()).filter((p) => p.data.selected).slice(0, 5);
+const themes = (await getCollection('research')).sort((a, b) => a.data.order - b.data.order);
+const scholar = site.profiles.find((p) => p.id === 'scholar');
+const orcid = site.profiles.find((p) => p.id === 'orcid' && p.show);
+---
+<BaseLayout>
+  <section class="border-b border-line bg-surface" aria-labelledby="intro-heading">
+    <div class="container-page grid items-center gap-8 py-12 sm:py-16 md:grid-cols-[240px_1fr] md:gap-12">
+      <Headshot class="mx-auto w-48 sm:w-56 md:w-60" />
+      <div>
+        <h1 id="intro-heading" class="text-4xl font-semibold sm:text-5xl">{site.displayName}</h1>
+        <p class="mt-3 text-lg font-medium text-fg">{site.jobTitle}</p>
+        <p class="text-muted">
+          {site.unit}<br />
+          <a href={site.institutionUrl}>{site.institution}</a>
+        </p>
+        <div class="prose-lite mt-5 max-w-2xl text-fg">
+          <Bio />
+        </div>
+        <div class="mt-6 flex flex-wrap gap-3">
+          <a class="btn btn-primary" href={`mailto:${site.email}`}><Icon name="mail" />Email</a>
+          {scholar && <a class="btn" href={scholar.url}><Icon name="scholar" />Google Scholar</a>}
+          {orcid && <a class="btn" href={orcid.url}><Icon name="orcid" />ORCID</a>}
+          <a class="btn" href="/cv/"><Icon name="file" />CV</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="container-page py-14" aria-labelledby="research-heading">
+    <div class="flex items-baseline justify-between gap-4">
+      <h2 id="research-heading" class="section-title">Research highlights</h2>
+      <a href="/research/" class="text-sm">All research<span class="sr-only"> themes</span> →</a>
+    </div>
+    <ul class="grid gap-4 sm:grid-cols-2">
+      {themes.map((t) => (
+        <li class="card">
+          <h3 class="text-lg font-semibold"><a href={`/research/#${t.id}`} class="text-fg hover:text-accent">{t.data.title}</a></h3>
+          <p class="mt-2 text-sm text-muted">{t.data.short}</p>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <div class="container-page grid gap-12 pb-4 lg:grid-cols-[1fr_1.3fr]">
+    <section aria-labelledby="news-heading">
+      <h2 id="news-heading" class="section-title">Recent news</h2>
+      <NewsList items={news} />
+    </section>
+
+    <section aria-labelledby="pubs-heading">
+      <div class="flex items-baseline justify-between gap-4">
+        <h2 id="pubs-heading" class="section-title">Selected publications</h2>
+        <a href="/publications/" class="text-sm">All publications →</a>
+      </div>
+      <ol class="space-y-5">
+        {selected.map((p) => <PublicationItem pub={p} compact />)}
+      </ol>
+    </section>
+  </div>
+</BaseLayout>

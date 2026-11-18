@@ -1,0 +1,105 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------ Colors
+   Semantic colors are CSS variables so light and dark mode share one set of
+   utility classes (bg-bg, text-fg, text-muted, border-line, text-accent, ...).
+   Accent = WSU crimson #A60F2D (brand.wsu.edu); lightened in dark mode for contrast. */
+:root {
+  color-scheme: light dark;
+  --bg: #ffffff;
+  --surface: #f6f6f7;
+  --fg: #1d2127;
+  --muted: #565e68;
+  --line: #e2e4e8;
+  --accent: #a60f2d;
+  --accent-hover: #860c24;
+  --accent-fg: #ffffff;
+  --accent-soft: #fbecef;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0f1115;
+    --surface: #171a21;
+    --fg: #e7e9ec;
+    --muted: #a5adb9;
+    --line: #2a2f3a;
+    --accent: #f0788c;
+    --accent-hover: #f59aa9;
+    --accent-fg: #0f1115;
+    --accent-soft: #2a161b;
+  }
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-fg: var(--accent-fg);
+  --color-accent-soft: var(--accent-soft);
+}
+
+@theme {
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  --font-serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, Cambria, "Times New Roman", serif;
+}
+
+/* ------------------------------------------------------------------ Base */
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    @apply bg-bg text-fg font-sans antialiased leading-relaxed;
+  }
+  h1, h2, h3 {
+    @apply font-serif text-fg tracking-tight;
+  }
+  a {
+    @apply text-accent underline-offset-4 hover:underline;
+  }
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+  ::selection {
+    background: var(--accent-soft);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+}
+
+/* ------------------------------------------------------------------ Components */
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-5xl px-4 sm:px-6;
+  }
+  .section-title {
+    @apply text-2xl font-semibold mb-4;
+  }
+  .card {
+    @apply rounded-xl border border-line bg-surface p-5;
+  }
+  .btn {
+    @apply inline-flex items-center gap-2 rounded-lg border border-line px-3.5 py-2 text-sm font-medium text-fg no-underline transition-colors hover:border-accent hover:text-accent hover:no-underline;
+  }
+  .btn-primary {
+    @apply border-accent bg-accent text-accent-fg hover:bg-accent-hover hover:text-accent-fg;
+  }
+  .chip {
+    @apply inline-flex items-center rounded-full border border-line px-2.5 py-0.5 text-xs font-medium text-muted;
+  }
+  .link-pill {
+    @apply inline-flex items-center gap-1 rounded-md border border-line px-2 py-0.5 text-xs font-medium no-underline hover:border-accent hover:no-underline;
+  }
+  /* Markdown body text (bio, project descriptions) */
+  .prose-lite p { @apply mb-4 last:mb-0; }
+  .prose-lite a { @apply underline; }
+}

@@ -1,0 +1,144 @@
+# Professional service.
+#   category: editorial | committee | journal-reviewer | conference-reviewer
+#   confirmed: false  -> hidden until verified (see notes/CONTENT_REVIEW.md)
+
+# ------------------------------------------------------------- Editorial roles
+- id: ae-ieee-tii
+  category: editorial
+  order: 1
+  role: Associate Editor
+  venue: IEEE Transactions on Industrial Informatics
+  confirmed: false
+
+- id: ge-itees
+  category: editorial
+  order: 2
+  role: Guest Editor
+  venue: International Transactions on Electrical Energy Systems
+  detail: Special Issue "Innovations in AI-Hybrid Energy Storage Integration for Multi-Energy Systems"
+  confirmed: false
+
+- id: ge-processes
+  category: editorial
+  order: 3
+  role: Guest Editor
+  venue: Processes (MDPI)
+  detail: Special Issue "Advances in Electrical Systems and Power Networks"
+  link: https://www.mdpi.com/journal/processes/special_issues/WS713DP676
+
+- id: ge-applied-sciences
+  category: editorial
+  order: 4
+  role: Guest Editor
+  venue: Applied Sciences (MDPI)
+  detail: Special Issue "Power System Security and Stability"
+  link: https://www.mdpi.com/journal/applsci/special_issues/M4Z01L6348
+
+- id: re-frontiers-smart-grids
+  category: editorial
+  order: 5
+  role: Review Editor
+  venue: Frontiers in Smart Grids
+  detail: Smart Grid Control section
+  confirmed: false
+
+# ------------------------------------------------------------- Conference committees
+- id: tc-spower-2027
+  category: committee
+  order: 1
+  role: Technical Committee
+  venue: International Conference on Smart Power (SPower 2027), Fuzhou, China
+  year: "2027"
+  confirmed: false
+
+- id: tpc-pece-2025
+  category: committee
+  order: 2
+  role: Technical Program Committee
+  venue: 4th International Conference on Power Electronics and Control Engineering (PECE 2025), Barcelona, Spain
+  year: "2025"
+  link: http://www.pece.net/com.html
+
+- id: tpc-icpees-2024
+  category: committee
+  order: 3
+  role: Technical Program Committee
+  venue: International Conference on Power Electronics and Energy Systems (ICPEES 2024), Kuala Lumpur, Malaysia
+  year: "2024"
+  confirmed: false
+
+- id: tpc-icpes-2024
+  category: committee
+  order: 4
+  role: Technical Program Committee
+  venue: 14th International Conference on Power and Energy Systems (ICPES 2024), Chengdu, China
+  year: "2024"
+  confirmed: false
+
+- id: tpc-icpes-2023
+  category: committee
+  order: 5
+  role: Technical Program Committee
+  venue: 13th International Conference on Power and Energy Systems (ICPES 2023), Chengdu, China
+  year: "2023"
+  confirmed: false
+
+- id: tpc-pece-2023
+  category: committee
+  order: 6
+  role: Technical Program Committee
+  venue: 3rd International Conference on Power Electronics and Control Engineering (PECE 2023), Krakow, Poland
+  year: "2023"
+  confirmed: false
+
+- id: oc-solar-rural-kansas-2023
+  category: committee
+  order: 7
+  role: Organizing Committee
+  venue: Symposium on Solar Energy for Rural Kansas, Manhattan, KS, USA
+  year: "2023"
+  confirmed: false
+
+- id: tpc-icpes-2022
+  category: committee
+  order: 8
+  role: Technical Program Committee
+  venue: 12th International Conference on Power and Energy Systems (ICPES 2022), Guangzhou, China
+  year: "2022"
+  confirmed: false
+
+- id: tpc-smartgridcomm-2022
+  category: committee
+  order: 9
+  role: Technical Program Committee
+  venue: Workshop on Intelligence and Security for Smart Energy Systems, IEEE SmartGridComm 2022, Singapore
+  year: "2022"
+
+# ------------------------------------------------------------- Journal reviewer
+- { id: rev-tsg, category: journal-reviewer, order: 1, role: Reviewer, venue: IEEE Transactions on Smart Grid }
+- { id: rev-tii, category: journal-reviewer, order: 2, role: Reviewer, venue: IEEE Transactions on Industrial Informatics }
+- { id: rev-tpwrs, category: journal-reviewer, order: 3, role: Reviewer, venue: IEEE Transactions on Power Systems }
+- { id: rev-tste, category: journal-reviewer, order: 4, role: Reviewer, venue: IEEE Transactions on Sustainable Energy }
+- { id: rev-tcc, category: journal-reviewer, order: 5, role: Reviewer, venue: IEEE Transactions on Cloud Computing }
+- { id: rev-tdsc, category: journal-reviewer, order: 6, role: Reviewer, venue: IEEE Transactions on Dependable and Secure Computing }
+- { id: rev-tifs, category: journal-reviewer, order: 7, role: Reviewer, venue: IEEE Transactions on Information Forensics and Security }
+- { id: rev-iotj, category: journal-reviewer, order: 8, role: Reviewer, venue: IEEE Internet of Things Journal }
+- { id: rev-pel, category: journal-reviewer, order: 9, role: Reviewer, venue: IEEE Power Engineering Letters }
+- { id: rev-oajpe, category: journal-reviewer, order: 10, role: Reviewer, venue: IEEE Open Access Journal of Power and Energy }
+- { id: rev-apen, category: journal-reviewer, order: 11, role: Reviewer, venue: Applied Energy }
+- { id: rev-egyr, category: journal-reviewer, order: 12, role: Reviewer, venue: Energy Reports }
+- { id: rev-mpce, category: journal-reviewer, order: 13, role: Reviewer, venue: Journal of Modern Power Systems and Clean Energy }
+- { id: rev-ipa, category: journal-reviewer, order: 14, role: Reviewer, venue: Information Processing in Agriculture }
+- { id: rev-isa, category: journal-reviewer, order: 15, role: Reviewer, venue: ISA Transactions }
+- { id: rev-ietsg, category: journal-reviewer, order: 16, role: Reviewer, venue: IET Smart Grid }
+
+# ------------------------------------------------------------- Conference reviewer
+- { id: crev-pesgm, category: conference-reviewer, order: 1, role: Reviewer, venue: IEEE Power & Energy Society General Meeting (PESGM) }
+- { id: crev-sgc, category: conference-reviewer, order: 2, role: Reviewer, venue: IEEE SmartGridComm }
+- { id: crev-isgt-eu, category: conference-reviewer, order: 3, role: Reviewer, venue: IEEE ISGT Europe }
+- { id: crev-isgt-na, category: conference-reviewer, order: 4, role: Reviewer, venue: IEEE ISGT North America }
+- { id: crev-kpec, category: conference-reviewer, order: 5, role: Reviewer, venue: IEEE Kansas Power & Energy Conference (KPEC) }
+- { id: crev-icps, category: conference-reviewer, order: 6, role: Reviewer, venue: IEEE International Conference on Industrial Cyber-Physical Systems (ICPS) }
+- { id: crev-meie, category: conference-reviewer, order: 7, role: Reviewer, venue: International Conference on Mechanical, Electric and Industrial Engineering (MEIE) }
+- { id: crev-icpes, category: conference-reviewer, order: 8, role: Reviewer, venue: International Conference on Power and Energy Systems (ICPES) }
+- { id: crev-csae, category: conference-reviewer, order: 9, role: Reviewer, venue: International Conference on Computer Science and Application Engineering (CSAE) }
