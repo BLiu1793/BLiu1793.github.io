@@ -22,6 +22,7 @@ const scholar = site.profiles.find((p) => p.id === 'scholar');
       {count('journal')} journal articles and {count('conference')} conference papers, newest first.{' '}
       {scholar && <>Citation counts are on <a href={scholar.url}>Google Scholar</a>.</>}
     </p>
+    {pubs.some((p) => p.data.corresponding) && <p class="mt-2 text-sm text-muted">* Corresponding author</p>}
   </PageHeader>
 
   <div class="container-page py-10">

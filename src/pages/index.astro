@@ -13,7 +13,7 @@ import { getNews, getPublications } from '../lib/content';
 import { getCollection } from 'astro:content';
 
 const news = (await getNews()).slice(0, 5);
-const selected = (await getPublications()).filter((p) => p.data.selected).slice(0, 5);
+const selected = (await getPublications()).filter((p) => p.data.selected);
 const themes = (await getCollection('research')).sort((a, b) => a.data.order - b.data.order);
 const scholar = site.profiles.find((p) => p.id === 'scholar');
 const orcid = site.profiles.find((p) => p.id === 'orcid' && p.show);
@@ -71,6 +71,7 @@ const hasCv = fs.existsSync(path.join(process.cwd(), 'public', cvHref));
       <ol class="space-y-5">
         {selected.map((p) => <PublicationItem pub={p} compact />)}
       </ol>
+      {selected.some((p) => p.data.corresponding) && <p class="mt-4 text-sm text-muted">* Corresponding author</p>}
     </section>
   </div>
 

@@ -19,6 +19,8 @@
   pages: 6505–6521
   year: 2026
   doi: 10.1109/TSG.2026.3711001
+  selected: true
+  corresponding: true
 
 - id: tii-2026-representation-learning-gans
   type: journal

@@ -28,7 +28,7 @@ const searchText = [p.title, p.authors.join(' '), p.venue, p.year].join(' ').toL
 <li class="pub group" data-type={p.type} data-search={searchText}>
   <p class="text-fg">
     {p.authors.map((a, i) => (
-      <>{self.has(a) ? <strong class="font-semibold">{a}</strong> : a}{separator(i)}</>
+      <>{self.has(a) ? <strong class="font-semibold">{a}{p.corresponding && <><span aria-hidden="true">*</span><span class="sr-only"> (corresponding author)</span></>}</strong> : a}{separator(i)}</>
     ))}{', “'}<span class="font-medium">{p.title}</span>{',” '}{p.type === 'conference' ? 'in ' : ''}<em>{p.venue}</em>{`, ${details}.`}{p.note ? <span class="text-muted">{` (${p.note})`}</span> : ''}
   </p>
   {!compact && (

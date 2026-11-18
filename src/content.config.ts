@@ -29,6 +29,7 @@ const publications = defineCollection({
     arxiv: z.string().optional(),
     openAccess: z.boolean().default(false),
     selected: z.boolean().default(false), // shown on the home page
+    corresponding: z.boolean().default(false), // you are corresponding author: your name gets an asterisk
     note: z.string().optional(),
     confirmed,
   }),

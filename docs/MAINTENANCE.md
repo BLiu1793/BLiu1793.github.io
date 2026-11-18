@@ -38,7 +38,8 @@ the file, because the site sorts them by year.
   # openAccess: true               # shows an "Open access" link
   # pdf: /papers/tsg-2027-short-name.pdf
   # arxiv: "2701.01234"
-  # selected: true                 # also show on the home page (keep about 5)
+  # selected: true                 # also show under "Selected publications" on Home
+  # corresponding: true            # you are corresponding author: shows B. Liu*
 ```
 
 For conference papers, use the full conference name as `venue`, e.g.
@@ -171,6 +172,7 @@ test on a separate git branch. To change the Node.js version, edit the `image:` 
 | Problem | Fix |
 |---|---|
 | `port is already allocated` | Something else uses 4321. Stop it, or change the left number in `compose.yaml` (`127.0.0.1:4322:4321`) and open :4322. |
+| A new field (e.g. `corresponding:`) is ignored in the preview | The preview caches content rules; run `docker compose restart web`. The full check and the published site are not affected. |
 | Page does not refresh after saving | `docker compose restart web`. If that keeps happening, add `WATCH_POLLING: "true"` under `environment:` in `compose.yaml`. |
 | `InvalidContentEntryDataError` | The message names the file, entry, and field. Fix the typo or missing field in that file. |
 | Packages seem broken | `rm -rf node_modules` then `docker compose up -d` (reinstalls). |
