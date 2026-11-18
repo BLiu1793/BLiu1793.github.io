@@ -46,14 +46,11 @@ const hasCv = fs.existsSync(path.join(process.cwd(), 'public', cvHref));
   </section>
 
   <section class="container-page py-14" aria-labelledby="research-heading">
-    <div class="flex items-baseline justify-between gap-4">
-      <h2 id="research-heading" class="section-title">Research highlights</h2>
-      <a href="/research/" class="text-sm">All research<span class="sr-only"> themes</span> →</a>
-    </div>
+    <h2 id="research-heading" class="section-title">Research highlights</h2>
     <ul class="grid gap-4 sm:grid-cols-2">
       {themes.map((t) => (
         <li class="card">
-          <h3 class="text-lg font-semibold"><a href={`/research/#${t.id}`} class="text-fg hover:text-accent">{t.data.title}</a></h3>
+          <h3 class="text-lg font-semibold">{t.data.title}</h3>
           <p class="mt-2 text-sm text-muted">{t.data.short}</p>
         </li>
       ))}

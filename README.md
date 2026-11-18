@@ -40,8 +40,8 @@ docker compose down                      # stop the preview server
 | `src/content/bio.md` | Home-page biography |
 | `src/content/publications.yaml` | All publications (one entry per paper) |
 | `src/content/news/*.md` | News items (one file each) |
-| `src/content/research.yaml` | Research themes (Research page and Home cards) |
-| `src/content/projects/*.md` | Funded projects |
+| `src/content/research.yaml` | Research highlight cards on the Home page |
+| `src/content/projects/*.md` | Funded projects (Research page) |
 | `src/content/service.yaml` | Professional service (shown on Home) |
 | `src/content/students.yaml`, `teaching.yaml`, `awards.yaml` | Other page content |
 | `src/content.config.ts` | Schemas: the rules every content file must follow |

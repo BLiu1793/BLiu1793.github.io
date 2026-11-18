@@ -88,6 +88,13 @@ official catalog titles.
 Edit the matching file in `src/content/`: `projects/*.md` (Research page), `service.yaml`
 (the "Professional service" section on the Home page), or `awards.yaml` (Research page).
 
+**Funded project details.** Each project is one file in `src/content/projects/`. The part
+between the `---` lines holds the title, sponsor, role, and period. Everything **below** the
+second `---` is the description shown on the Research page. Write it as ordinary paragraphs
+(leave a blank line between paragraphs); Markdown such as `**bold**` and `[links](https://…)` works.
+
+**Home page research cards** (title + one sentence each) are in `src/content/research.yaml`.
+
 **Hidden entries.** Entries marked `confirmed: false` stay in the file but do not appear on
 the site. They are CV items that had not been verified when the site was built (see
 `notes/CONTENT_REVIEW.md`). To show one, delete that line or change it to `confirmed: true`.

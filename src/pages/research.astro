@@ -1,101 +1,44 @@
 ---
+// Research page: funded projects and awards only.
+// Data: src/content/projects/*.md (one file per project) and src/content/awards.yaml
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHeader from '../components/PageHeader.astro';
-import PublicationItem from '../components/PublicationItem.astro';
-import { getCollection, render } from 'astro:content';
+import { render } from 'astro:content';
 import { site } from '../config';
-import { getPublications, visible } from '../lib/content';
-
-const themes = (await getCollection('research')).sort((a, b) => a.data.order - b.data.order);
-const pubs = await getPublications();
-const pubById = new Map(pubs.map((p) => [p.id, p]));
+import { visible } from '../lib/content';
 
 const projects = (await visible('projects')).sort((a, b) => a.data.order - b.data.order);
-const projectBodies = new Map(
-  await Promise.all(projects.map(async (p) => [p.id, (await render(p)).Content] as const)),
-);
-const current = projects.filter((p) => p.data.status === 'current');
-const previous = projects.filter((p) => p.data.status === 'previous');
+const withBodies = await Promise.all(projects.map(async (p) => ({ p, Body: (await render(p)).Content })));
+const groups = [
+  { heading: 'Current', items: withBodies.filter(({ p }) => p.data.status === 'current') },
+  { heading: 'Previous (Kansas State University)', items: withBodies.filter(({ p }) => p.data.status === 'previous') },
+].filter((g) => g.items.length > 0);
 const money = (n?: number) =>
   site.features.showFundingAmounts && n ? ` · $${n.toLocaleString('en-US')}` : '';
 
 const awards = await visible('awards');
 ---
-<BaseLayout title="Research" description="Research on smart grid cyber-physical security, moving target defense, stealthy data-driven attacks, and state estimation.">
-  <PageHeader
-    title="Research"
-    lead="Dr. Liu's research leverages power systems, graph theory, optimization, machine learning, and state estimation to identify vulnerabilities in smart grids and to develop defenses against cyberattacks."
-  >
-    <ul class="mt-6 flex flex-wrap gap-2" aria-label="Research interests">
-      {site.interests.map((i) => <li class="chip bg-bg text-sm">{i}</li>)}
-    </ul>
-  </PageHeader>
+<BaseLayout title="Research" description={`Funded research projects and awards of ${site.name}, ${site.institution}.`}>
+  <PageHeader title="Research" />
 
   <div class="container-page py-12">
-    <nav aria-label="On this page" class="mb-12 text-sm">
-      <ul class="flex flex-wrap gap-x-5 gap-y-2">
-        {themes.map((t) => <li><a href={`#${t.id}`}>{t.data.title}</a></li>)}
-        <li><a href="#funding">Funded projects</a></li>
-        <li><a href="#awards">Awards</a></li>
-      </ul>
-    </nav>
-
-    {themes.map((t) => {
-      const reps = t.data.publications.map((id) => pubById.get(id)).filter((p) => p !== undefined);
-      return (
-        <section id={t.id} class="mb-14 scroll-mt-24" aria-labelledby={`${t.id}-h`}>
-          <h2 id={`${t.id}-h`} class="section-title">{t.data.title}</h2>
-          <p class="max-w-3xl">{t.data.summary}</p>
-          {reps.length > 0 && (
-            <>
-              <h3 class="mt-6 mb-3 font-sans text-sm font-semibold uppercase tracking-wide text-muted">Representative publications</h3>
-              <ol class="space-y-3 text-sm">
-                {reps.map((p) => <PublicationItem pub={p} compact />)}
-              </ol>
-            </>
-          )}
-        </section>
-      );
-    })}
-
     <section id="funding" class="mb-14 scroll-mt-24" aria-labelledby="funding-h">
       <h2 id="funding-h" class="section-title">Funded projects</h2>
-      {current.length > 0 && (
+      {groups.map((g) => (
         <>
-          <h3 class="mb-3 font-sans text-sm font-semibold uppercase tracking-wide text-muted">Current</h3>
+          <h3 class="mb-3 font-sans text-sm font-semibold uppercase tracking-wide text-muted">{g.heading}</h3>
           <ul class="mb-8 grid gap-4 md:grid-cols-2">
-            {current.map((p) => {
-              const Body = projectBodies.get(p.id)!;
-              return (
-                <li class="card">
-                  <p class="font-semibold">{p.data.link ? <a href={p.data.link}>{p.data.title}</a> : p.data.title}</p>
-                  <p class="mt-1 text-sm text-muted">{p.data.role} · {p.data.sponsor} · {p.data.period}{money(p.data.amount)}</p>
-                  <div class="prose-lite mt-2 text-sm"><Body /></div>
-                </li>
-              );
-            })}
+            {g.items.map(({ p, Body }) => (
+              <li class="card">
+                <p class="font-semibold">{p.data.link ? <a href={p.data.link}>{p.data.title}</a> : p.data.title}</p>
+                <p class="mt-1 text-sm text-muted">{p.data.role} · {p.data.sponsor} · {p.data.period}{money(p.data.amount)}</p>
+                <div class="prose-lite mt-2 text-sm"><Body /></div>
+              </li>
+            ))}
           </ul>
         </>
-      )}
-      {previous.length > 0 && (
-        <>
-          <h3 class="mb-3 font-sans text-sm font-semibold uppercase tracking-wide text-muted">Previous (Kansas State University)</h3>
-          <ul class="grid gap-4 md:grid-cols-2">
-            {previous.map((p) => {
-              const Body = projectBodies.get(p.id)!;
-              return (
-                <li class="card">
-                  <p class="font-semibold">{p.data.link ? <a href={p.data.link}>{p.data.title}</a> : p.data.title}</p>
-                  <p class="mt-1 text-sm text-muted">{p.data.role} · {p.data.sponsor} · {p.data.period}{money(p.data.amount)}</p>
-                  <div class="prose-lite mt-2 text-sm"><Body /></div>
-                </li>
-              );
-            })}
-          </ul>
-        </>
-      )}
+      ))}
     </section>
-
 
     <section id="awards" class="scroll-mt-24" aria-labelledby="awards-h">
       <h2 id="awards-h" class="section-title">Awards</h2>

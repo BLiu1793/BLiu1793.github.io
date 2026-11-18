@@ -65,8 +65,6 @@ const research = defineCollection({
   schema: z.object({
     title: z.string(),
     short: z.string(), // one-sentence card text for the home page
-    summary: z.string(),
-    publications: z.array(z.string()).default([]), // ids from publications.yaml
     order: z.number(),
   }),
 });
