@@ -19,7 +19,7 @@ const scholar = site.profiles.find((p) => p.id === 'scholar');
 <BaseLayout title="Publications" description={`Journal articles and conference papers by ${site.name} on smart grid cybersecurity, moving target defense, and state estimation.`}>
   <PageHeader title="Publications">
     <p class="mt-3 max-w-3xl text-lg text-muted">
-      {count('journal')} journal articles and {count('conference')} conference papers, newest first.
+      {count('journal')} journal articles and {count('conference')} conference papers, newest first.{' '}
       {scholar && <>Citation counts are on <a href={scholar.url}>Google Scholar</a>.</>}
     </p>
   </PageHeader>

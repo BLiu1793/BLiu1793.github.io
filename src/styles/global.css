@@ -34,15 +34,18 @@
   --color-footer-fg: var(--footer-fg);
 }
 
+/* Fonts: Times New Roman everywhere (Windows/macOS). Liberation Serif and Tinos are
+   metric-compatible look-alikes used on Linux/ChromeOS, where Times New Roman is absent. */
 @theme {
-  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
-  --font-serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, Cambria, "Times New Roman", serif;
+  --font-serif: "Times New Roman", Times, "Liberation Serif", Tinos, serif;
+  --font-sans: var(--font-serif);
 }
 
 /* ------------------------------------------------------------------ Base */
 @layer base {
   html {
     -webkit-text-size-adjust: 100%;
+    font-size: 106.25%; /* 17px base: Times has small letters, so text is set slightly larger */
   }
   body {
     @apply bg-bg text-fg font-sans antialiased leading-relaxed;
