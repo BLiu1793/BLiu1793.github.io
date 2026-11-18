@@ -8,15 +8,17 @@ const found = Object.values(
   import.meta.glob<{ default: ImageMetadata }>('../assets/headshot.{jpg,jpeg,png,webp}', { eager: true }),
 )[0];
 const initials = site.name.split(' ').map((p) => p[0]).join('');
+// Never upscale: use the photo's own width (a larger original gives a sharper result).
+const width = found ? Math.min(found.default.width, 480) : 0;
 ---
 {found ? (
   <Image
     src={found.default}
     alt={`Portrait of ${site.name}`}
-    widths={[240, 480]}
-    sizes="240px"
-    class:list={['aspect-square rounded-2xl object-cover', cls]}
+    width={width}
+    class:list={['h-auto w-full rounded-2xl border border-line object-cover shadow-sm', cls]}
     loading="eager"
+    fetchpriority="high"
   />
 ) : (
   <div

@@ -27,10 +27,5 @@ export async function getNews() {
 export const monthYear = (d: Date) =>
   d.toLocaleDateString('en-US', { month: 'short', year: 'numeric', timeZone: 'UTC' });
 
-/** "2025-02-11" or "2025-02" -> "Feb 2025" */
-export function formatYearMonth(s: string) {
-  const [y, m] = s.split('-').map(Number);
-  return monthYear(new Date(Date.UTC(y, (m || 1) - 1, 1)));
-}
 
 export const doiUrl = (doi: string) => `https://doi.org/${doi}`;

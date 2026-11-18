@@ -30,12 +30,12 @@ export const site = {
   // Profile links. Set show: false to hide one without deleting it.
   profiles: [
     { id: 'scholar', label: 'Google Scholar', url: 'https://scholar.google.com/citations?user=wJ_egQ0AAAAJ&hl=en', show: true },
-    { id: 'orcid', label: 'ORCID', url: 'https://orcid.org/0000-0002-2965-7714', show: true },
+    { id: 'orcid', label: 'ORCID', url: 'https://orcid.org/0000-0002-2965-7714', show: false },
     { id: 'linkedin', label: 'LinkedIn', url: 'https://www.linkedin.com/in/bo-liu-2ab675152/', show: false },
   ],
 
-  // CV: put the PDF at public/cv/<file>. The CV page shows a notice until the file exists.
-  cv: { file: 'Bo_Liu_CV.pdf', updated: '' },
+  // CV: the PDF at public/cv/<file> is linked from the Home page (button hidden if the file is missing).
+  cv: { file: 'Bo_Liu_CV.pdf' },
 
   features: {
     showFundingAmounts: false, // show dollar amounts on the Research page
@@ -45,8 +45,9 @@ export const site = {
   prospectiveStudents:
     'Students interested in smart grid cybersecurity, state estimation, or power system operation are welcome to get in touch by email with a CV and a short description of their interests.',
 
-  // Required by WSU guidance for AI-assisted work (see the "About this site" note on the Contact page).
+  // Required by WSU guidance for AI-assisted work: byline plus a short statement of the AI's role (shown in the footer).
   aiAttribution: 'Developed with Claude (AI)',
+  aiRole: 'Claude generated the site code and first-draft text; all content reviewed by Bo Liu.',
 };
 
 export const nav = [
@@ -55,6 +56,5 @@ export const nav = [
   { href: '/publications/', label: 'Publications' },
   { href: '/teaching/', label: 'Teaching' },
   { href: '/students/', label: 'Students' },
-  { href: '/cv/', label: 'CV' },
   { href: '/contact/', label: 'Contact' },
 ];

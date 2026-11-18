@@ -83,10 +83,10 @@ Edit `src/content/students.yaml`.
 Edit `src/content/teaching.yaml`. Add a term to `terms: [...]` or add a new entry. Use the
 official catalog titles.
 
-## Projects, service, talks, awards, appointments
+## Projects, service, awards
 
-Edit the matching file in `src/content/`: `projects/*.md`, `service.yaml`, `talks.yaml`,
-`awards.yaml`, `positions.yaml`, or `education.yaml`.
+Edit the matching file in `src/content/`: `projects/*.md` (Research page), `service.yaml`
+(the "Professional service" section on the Home page), or `awards.yaml` (Research page).
 
 **Hidden entries.** Entries marked `confirmed: false` stay in the file but do not appear on
 the site. They are CV items that had not been verified when the site was built (see
@@ -97,24 +97,27 @@ Grant dollar amounts are stored but hidden. To show them, set `showFundingAmount
 
 ## CV PDF
 
-1. In Word: **File → Save As → PDF**.
-2. Save it as `public/cv/Bo_Liu_CV.pdf`, replacing the old one.
-3. In `src/config.ts`, set `cv: { file: 'Bo_Liu_CV.pdf', updated: 'January 2027' }`.
+The **CV (PDF)** button on the Home page opens `public/cv/Bo_Liu_CV.pdf`.
 
-Until the file exists, the CV page shows "will be available soon" instead of a download
-button.
+1. In Word: **File → Save As → PDF**. Before saving, check **File → Info → Properties → Author**,
+   because PDFs keep that field.
+2. Save it as `public/cv/Bo_Liu_CV.pdf`, replacing the old one.
+
+If the file is missing, the button is hidden. The PDF is public once the site is deployed,
+so remove anything you don't want online (e.g. a personal phone number).
 
 ## Headshot
 
-Save a square-ish photo (at least 800 px) as `src/assets/headshot.jpg`. `.png` and `.webp`
-also work. The site resizes and compresses it automatically. To remove it, delete the file,
-and the initials badge returns.
+The photo is `src/assets/headshot.jpg`. To replace it, save a new portrait photo under the
+same name (`.png` and `.webp` also work). The site compresses it and never enlarges it, so
+an original at least 600 px wide looks sharper on high-resolution screens than the current
+218 px one. If you delete the file, an initials badge appears instead.
 
 ## Bio, title, contact details, profile links
 
 - Biography: `src/content/bio.md`.
 - Name, title, office, address, email, research interests, profile links: `src/config.ts`.
-  To hide a profile link without deleting it, set `show: false`. LinkedIn is currently hidden.
+  To hide a profile link without deleting it, set `show: false`. ORCID and LinkedIn are currently hidden.
 - Menu items: `nav` at the bottom of `src/config.ts`.
 
 ## Look and feel

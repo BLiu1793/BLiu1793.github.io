@@ -4,13 +4,13 @@ Personal academic website of **Bo Liu**, Assistant Professor of Electrical Engin
 Washington State University Tri-Cities. Built with [Astro](https://astro.build) and
 [Tailwind CSS](https://tailwindcss.com), to be hosted on GitHub Pages.
 
-> **Status:** Phase 2 complete (built and previewable locally). **Not published.** Nothing is
-> pushed to GitHub until the site owner explicitly approves deployment (Phase 4).
+> **Status:** Phase 3 (owner review and revisions). **Not published.** Nothing is pushed to
+> GitHub until the site owner explicitly approves deployment (Phase 4).
 
 ## Objectives
 
-- A fast, accessible, mobile-friendly academic site: Home, Research, Publications, Teaching,
-  Students, CV, Contact.
+- A fast, accessible, mobile-friendly academic site: Home (with CV PDF and professional
+  service), Research, Publications, Teaching, Students, Contact.
 - Content kept in plain data files (YAML/Markdown), so you can update it without writing code.
 - Every build checks content against a schema, and the HTML and links are validated.
 
@@ -42,17 +42,18 @@ docker compose down                      # stop the preview server
 | `src/content/news/*.md` | News items (one file each) |
 | `src/content/research.yaml` | Research themes (Research page and Home cards) |
 | `src/content/projects/*.md` | Funded projects |
-| `src/content/students.yaml`, `teaching.yaml`, `service.yaml`, `talks.yaml`, `awards.yaml`, `positions.yaml`, `education.yaml` | Other page content |
+| `src/content/service.yaml` | Professional service (shown on Home) |
+| `src/content/students.yaml`, `teaching.yaml`, `awards.yaml` | Other page content |
 | `src/content.config.ts` | Schemas: the rules every content file must follow |
 | `src/pages/` | One file per page (`index.astro` = Home) |
 | `src/components/`, `src/layouts/` | Shared page parts (header, footer, publication entry, …) |
 | `src/styles/global.css` | Colors (WSU crimson accent), fonts, light/dark mode |
-| `src/assets/` | Put `headshot.jpg` here (optimized automatically) |
-| `public/` | Files served as-is: `cv/Bo_Liu_CV.pdf`, `papers/*.pdf`, `favicon.svg` |
+| `src/assets/headshot.jpg` | Home-page photo (optimized automatically) |
+| `public/` | Files served as-is: `cv/Bo_Liu_CV.pdf` (linked from Home), `papers/*.pdf`, `favicon.svg` |
 | `docs/MAINTENANCE.md` | **How to update the site**, step by step |
 | `compose.yaml` | The project's Docker container |
 | `notes/` | *Local only, never published:* plan, content review checklist, AI work log |
-| `source_materials/` | *Local only, never published:* original CV (.docx) and project brief |
+| `source_materials/`, `File/` | *Local only, never published:* original CV files, photo, and project brief |
 
 ## Dependencies
 
@@ -76,5 +77,5 @@ course; replacing the CV PDF or headshot; checking; deploying; upgrading.
   workspace container has no Node.js and must not be modified. The site owner approved this
   on 2026-11-18.
 - AI assistance: the code, structure, and first-draft text were produced with Claude (AI).
-  WSU guidance requires the footer credit "Developed with Claude (AI)" and the "About this
-  site" note on the Contact page; keep both.
+  WSU guidance requires the byline "Developed with Claude (AI)" and a short statement of the
+  AI's role. Both appear in the footer (`aiAttribution` and `aiRole` in `src/config.ts`); keep them.

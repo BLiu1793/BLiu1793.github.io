@@ -1,0 +1,55 @@
+---
+// Professional service (editorial roles, conference committees, reviewing). Data: src/content/service.yaml
+import { visible } from '../lib/content';
+
+const service = (await visible('service')).sort((a, b) => a.data.order - b.data.order);
+const editorial = service.filter((s) => s.data.category === 'editorial');
+const committees = service.filter((s) => s.data.category === 'committee');
+const journalReviewer = service.filter((s) => s.data.category === 'journal-reviewer');
+const confReviewer = service.filter((s) => s.data.category === 'conference-reviewer');
+---
+<section id="service" class="container-page scroll-mt-24 pt-14" aria-labelledby="service-h">
+  <h2 id="service-h" class="section-title">Professional service</h2>
+  <div class="grid gap-8 md:grid-cols-2">
+    {editorial.length > 0 && (
+      <div class="card">
+        <h3 class="mb-3 text-lg font-semibold">Editorial</h3>
+        <ul class="space-y-3">
+          {editorial.map((s) => (
+            <li>
+              <span class="font-medium">{s.data.role}</span>, {s.data.link ? <a href={s.data.link}><em>{s.data.venue}</em></a> : <em>{s.data.venue}</em>}
+              {s.data.detail && <span class="block text-sm text-muted">{s.data.detail}</span>}
+            </li>
+          ))}
+        </ul>
+      </div>
+    )}
+    {committees.length > 0 && (
+      <div class="card">
+        <h3 class="mb-3 text-lg font-semibold">Conference committees</h3>
+        <ul class="space-y-2 text-sm">
+          {committees.map((s) => (
+            <li>
+              <span class="font-medium">{s.data.role}</span>, {s.data.link ? <a href={s.data.link}>{s.data.venue}</a> : s.data.venue}
+            </li>
+          ))}
+        </ul>
+      </div>
+    )}
+  </div>
+  {(journalReviewer.length > 0 || confReviewer.length > 0) && (
+    <details class="mt-6 rounded-xl border border-line p-4">
+      <summary class="cursor-pointer font-medium">Reviewer for {journalReviewer.length} journals and {confReviewer.length} conferences</summary>
+      <div class="mt-4 grid gap-6 text-sm md:grid-cols-2">
+        <div>
+          <h3 class="mb-2 font-sans font-semibold">Journals</h3>
+          <ul class="list-disc space-y-1 pl-5">{journalReviewer.map((s) => <li><em>{s.data.venue}</em></li>)}</ul>
+        </div>
+        <div>
+          <h3 class="mb-2 font-sans font-semibold">Conferences</h3>
+          <ul class="list-disc space-y-1 pl-5">{confReviewer.map((s) => <li>{s.data.venue}</li>)}</ul>
+        </div>
+      </div>
+    </details>
+  )}
+</section>

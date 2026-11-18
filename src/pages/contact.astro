@@ -52,15 +52,4 @@ const profiles = site.profiles.filter((p) => p.show);
     </section>
   </div>
 
-  <section id="about-this-site" class="container-page scroll-mt-24" aria-labelledby="about-h">
-    <div class="card max-w-3xl">
-      <h2 id="about-h" class="mb-2 text-xl font-semibold">About this site</h2>
-      <p class="text-sm">
-        This website was {site.aiAttribution.charAt(0).toLowerCase() + site.aiAttribution.slice(1)}. Claude generated the site's
-        code and structure and drafted its first text from Dr. Liu's CV, Google Scholar profile, and publisher (DOI)
-        records. Dr. Liu reviewed and approved all content and is responsible for it. The site is built with
-        Astro and Tailwind CSS.
-      </p>
-    </div>
-  </section>
 </BaseLayout>

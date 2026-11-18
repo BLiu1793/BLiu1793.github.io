@@ -15,3 +15,7 @@ CLAUDE.md
 .vscode/*
 !.vscode/extensions.json
 npm-debug.log*
+
+# originals supplied by the owner (copies live in src/assets/ and public/cv/)
+File/
+to_do_list.txt

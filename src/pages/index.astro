@@ -4,6 +4,9 @@ import Headshot from '../components/Headshot.astro';
 import Icon from '../components/Icon.astro';
 import NewsList from '../components/NewsList.astro';
 import PublicationItem from '../components/PublicationItem.astro';
+import ServiceSection from '../components/ServiceSection.astro';
+import fs from 'node:fs';
+import path from 'node:path';
 import { Content as Bio } from '../content/bio.md';
 import { site } from '../config';
 import { getNews, getPublications } from '../lib/content';
@@ -14,11 +17,14 @@ const selected = (await getPublications()).filter((p) => p.data.selected).slice(
 const themes = (await getCollection('research')).sort((a, b) => a.data.order - b.data.order);
 const scholar = site.profiles.find((p) => p.id === 'scholar');
 const orcid = site.profiles.find((p) => p.id === 'orcid' && p.show);
+const cvHref = `/cv/${site.cv.file}`;
+// Path is relative to the project root (where astro dev/build run).
+const hasCv = fs.existsSync(path.join(process.cwd(), 'public', cvHref));
 ---
 <BaseLayout>
   <section class="border-b border-line bg-surface" aria-labelledby="intro-heading">
-    <div class="container-page grid items-center gap-8 py-12 sm:py-16 md:grid-cols-[240px_1fr] md:gap-12">
-      <Headshot class="mx-auto w-48 sm:w-56 md:w-60" />
+    <div class="container-page grid items-center gap-8 py-12 sm:py-16 md:grid-cols-[218px_1fr] md:gap-12">
+      <Headshot class="mx-auto w-44 sm:w-52 md:w-full" />
       <div>
         <h1 id="intro-heading" class="text-4xl font-semibold sm:text-5xl">{site.displayName}</h1>
         <p class="mt-3 text-lg font-medium text-fg">{site.jobTitle}</p>
@@ -33,7 +39,7 @@ const orcid = site.profiles.find((p) => p.id === 'orcid' && p.show);
           <a class="btn btn-primary" href={`mailto:${site.email}`}><Icon name="mail" />Email</a>
           {scholar && <a class="btn" href={scholar.url}><Icon name="scholar" />Google Scholar</a>}
           {orcid && <a class="btn" href={orcid.url}><Icon name="orcid" />ORCID</a>}
-          <a class="btn" href="/cv/"><Icon name="file" />CV</a>
+          {hasCv && <a class="btn" href={cvHref}><Icon name="file" />CV (PDF)</a>}
         </div>
       </div>
     </div>
@@ -70,4 +76,6 @@ const orcid = site.profiles.find((p) => p.id === 'orcid' && p.show);
       </ol>
     </section>
   </div>
+
+  <ServiceSection />
 </BaseLayout>

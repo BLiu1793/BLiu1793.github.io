@@ -112,21 +112,6 @@ const service = defineCollection({
   }),
 });
 
-const talks = defineCollection({
-  loader: file('src/content/talks.yaml'),
-  schema: z.object({
-    kind: z.enum(['invited', 'conference', 'poster']),
-    title: z.string(),
-    event: z.string(),
-    location: z.string().optional(),
-    // YAML reads 2025-02-11 as a date and 2025-02 as text; both become "YYYY-MM[-DD]".
-    date: z
-      .union([z.date().transform((d) => d.toISOString().slice(0, 10)), z.string()])
-      .pipe(z.string().regex(/^\d{4}-\d{2}(-\d{2})?$/, 'Use YYYY-MM or YYYY-MM-DD')),
-    link: z.url().optional(),
-    confirmed,
-  }),
-});
 
 const awards = defineCollection({
   loader: file('src/content/awards.yaml'),
@@ -138,32 +123,7 @@ const awards = defineCollection({
   }),
 });
 
-const positions = defineCollection({
-  loader: file('src/content/positions.yaml'),
-  schema: z.object({
-    title: z.string(),
-    organization: z.string(),
-    location: z.string().optional(),
-    start: z.string(),
-    end: z.string(),
-    order: z.number(),
-    confirmed,
-  }),
-});
 
-const education = defineCollection({
-  loader: file('src/content/education.yaml'),
-  schema: z.object({
-    degree: z.string(),
-    field: z.string(),
-    institution: z.string(),
-    location: z.string().optional(),
-    year: z.string(),
-    note: z.string().optional(),
-    link: z.url().optional(),
-    order: z.number(),
-  }),
-});
 
 export const collections = {
   publications,
@@ -173,8 +133,5 @@ export const collections = {
   students,
   teaching,
   service,
-  talks,
   awards,
-  positions,
-  education,
 };

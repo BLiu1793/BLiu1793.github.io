@@ -8,7 +8,6 @@
   order: 1
   role: Associate Editor
   venue: IEEE Transactions on Industrial Informatics
-  confirmed: false
 
 - id: ge-itees
   category: editorial
@@ -16,7 +15,6 @@
   role: Guest Editor
   venue: International Transactions on Electrical Energy Systems
   detail: Special Issue "Innovations in AI-Hybrid Energy Storage Integration for Multi-Energy Systems"
-  confirmed: false
 
 - id: ge-processes
   category: editorial
@@ -49,7 +47,6 @@
   role: Technical Committee
   venue: International Conference on Smart Power (SPower 2027), Fuzhou, China
   year: "2027"
-  confirmed: false
 
 - id: tpc-pece-2025
   category: committee
@@ -65,7 +62,6 @@
   role: Technical Program Committee
   venue: International Conference on Power Electronics and Energy Systems (ICPEES 2024), Kuala Lumpur, Malaysia
   year: "2024"
-  confirmed: false
 
 - id: tpc-icpes-2024
   category: committee
@@ -73,7 +69,6 @@
   role: Technical Program Committee
   venue: 14th International Conference on Power and Energy Systems (ICPES 2024), Chengdu, China
   year: "2024"
-  confirmed: false
 
 - id: tpc-icpes-2023
   category: committee
@@ -81,7 +76,6 @@
   role: Technical Program Committee
   venue: 13th International Conference on Power and Energy Systems (ICPES 2023), Chengdu, China
   year: "2023"
-  confirmed: false
 
 - id: tpc-pece-2023
   category: committee
@@ -89,7 +83,6 @@
   role: Technical Program Committee
   venue: 3rd International Conference on Power Electronics and Control Engineering (PECE 2023), Krakow, Poland
   year: "2023"
-  confirmed: false
 
 - id: oc-solar-rural-kansas-2023
   category: committee
@@ -97,7 +90,6 @@
   role: Organizing Committee
   venue: Symposium on Solar Energy for Rural Kansas, Manhattan, KS, USA
   year: "2023"
-  confirmed: false
 
 - id: tpc-icpes-2022
   category: committee
@@ -105,7 +97,6 @@
   role: Technical Program Committee
   venue: 12th International Conference on Power and Energy Systems (ICPES 2022), Guangzhou, China
   year: "2022"
-  confirmed: false
 
 - id: tpc-smartgridcomm-2022
   category: committee

@@ -259,7 +259,7 @@
 - id: pesgm-2025-enhanced-tc-dsse
   type: conference
   title: Enhanced Tensor-Completion Distribution System State Estimation Considering Measurement Outliers and Noises
-  authors: [B. Liu, H. Yan, H. Wu, R. Yang, Y. Liu]
+  authors: [B. Liu, H. Yang, H. Wu, R. Yang, Y. Liu]
   venue: 2025 IEEE Power & Energy Society General Meeting (PESGM)
   pages: 1–5
   year: 2025

@@ -7,6 +7,5 @@ period: 2026–2027
 status: current
 amount: 4000
 order: 2
-confirmed: false
 ---
 Detecting and recovering corrupted measurements in distribution system state estimation.
