@@ -24,7 +24,7 @@ const hasCv = fs.existsSync(path.join(process.cwd(), 'public', cvHref));
 <BaseLayout>
   <section class="border-b border-line bg-surface" aria-labelledby="intro-heading">
     <div class="container-page grid items-center gap-8 py-12 sm:py-16 md:grid-cols-[218px_1fr] md:gap-12">
-      <Headshot class="mx-auto w-44 sm:w-52 md:w-full" />
+      <Headshot class="mx-auto w-44 sm:w-52 md:w-[218px]" />
       <div>
         <h1 id="intro-heading" class="text-4xl font-semibold sm:text-5xl">{site.displayName}</h1>
         <p class="mt-3 text-lg font-medium text-fg">{site.jobTitle}</p>

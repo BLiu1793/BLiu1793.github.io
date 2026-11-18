@@ -129,9 +129,10 @@ an original at least 600 px wide looks sharper on high-resolution screens than t
 
 ## Look and feel
 
-Colors are defined at the top of `src/styles/global.css`. The accent is WSU crimson
-`#A60F2D` (brand.wsu.edu), lightened in dark mode for contrast. The site follows the
-visitor's light/dark system setting.
+Colors are defined at the top of `src/styles/global.css`. The site color is WSU crimson
+`#A60F2D` (brand.wsu.edu), used for the header bar, section rules, card edges, buttons, and
+links. The site always uses this light theme; there is no automatic dark mode, so every
+visitor sees the same design. To change a color, edit its value in `:root`.
 
 ---
 

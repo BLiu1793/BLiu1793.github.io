@@ -47,7 +47,7 @@ docker compose down                      # stop the preview server
 | `src/content.config.ts` | Schemas: the rules every content file must follow |
 | `src/pages/` | One file per page (`index.astro` = Home) |
 | `src/components/`, `src/layouts/` | Shared page parts (header, footer, publication entry, …) |
-| `src/styles/global.css` | Colors (WSU crimson accent), fonts, light/dark mode |
+| `src/styles/global.css` | Colors (WSU crimson `#A60F2D`), fonts, shared styles |
 | `src/assets/headshot.jpg` | Home-page photo (optimized automatically) |
 | `public/` | Files served as-is: `cv/Bo_Liu_CV.pdf` (linked from Home), `papers/*.pdf`, `favicon.svg` |
 | `docs/MAINTENANCE.md` | **How to update the site**, step by step |

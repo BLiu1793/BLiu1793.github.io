@@ -4,9 +4,10 @@ import Icon from './Icon.astro';
 const path = Astro.url.pathname.replace(/\/?$/, '/');
 const isCurrent = (href: string) => (href === '/' ? path === '/' : path.startsWith(href));
 ---
-<header class="sticky top-0 z-20 border-b border-line bg-bg/90 backdrop-blur supports-[backdrop-filter]:bg-bg/75">
+<!-- Crimson WSU-style header bar -->
+<header class="sticky top-0 z-20 bg-accent text-white shadow-sm">
   <div class="container-page flex h-16 items-center justify-between gap-4">
-    <a href="/" class="font-serif text-lg font-semibold text-fg no-underline hover:no-underline">
+    <a href="/" class="font-serif text-xl font-semibold text-white no-underline hover:no-underline focus-visible:outline-white">
       {site.name}<span class="sr-only">, home page</span>
     </a>
 
@@ -18,8 +19,8 @@ const isCurrent = (href: string) => (href === '/' ? path === '/' : path.startsWi
               href={item.href}
               aria-current={isCurrent(item.href) ? 'page' : undefined}
               class:list={[
-                'rounded-md px-3 py-2 no-underline hover:bg-surface hover:no-underline',
-                isCurrent(item.href) ? 'text-accent font-semibold' : 'text-muted hover:text-fg',
+                'block border-b-2 px-3 py-2 text-white no-underline hover:border-white/70 hover:no-underline focus-visible:outline-white',
+                isCurrent(item.href) ? 'border-white font-semibold' : 'border-transparent text-white/90',
               ]}
             >{item.label}</a>
           </li>
@@ -28,7 +29,7 @@ const isCurrent = (href: string) => (href === '/' ? path === '/' : path.startsWi
     </nav>
 
     <details class="group relative md:hidden">
-      <summary class="flex cursor-pointer list-none items-center gap-2 rounded-md border border-line px-3 py-1.5 text-sm text-fg [&::-webkit-details-marker]:hidden">
+      <summary class="flex cursor-pointer list-none items-center gap-2 rounded-md border border-white/60 px-3 py-1.5 text-sm text-white focus-visible:outline-white [&::-webkit-details-marker]:hidden">
         <Icon name="menu" /> Menu
       </summary>
       <nav aria-label="Main (mobile)" class="absolute right-0 mt-2 w-52 rounded-xl border border-line bg-bg p-2 shadow-lg">
@@ -39,7 +40,7 @@ const isCurrent = (href: string) => (href === '/' ? path === '/' : path.startsWi
                 href={item.href}
                 aria-current={isCurrent(item.href) ? 'page' : undefined}
                 class:list={[
-                  'block rounded-md px-3 py-2 no-underline hover:bg-surface hover:no-underline',
+                  'block rounded-md px-3 py-2 no-underline hover:bg-accent-soft hover:no-underline',
                   isCurrent(item.href) ? 'text-accent font-semibold' : 'text-fg',
                 ]}
               >{item.label}</a>

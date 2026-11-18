@@ -16,7 +16,7 @@ const width = found ? Math.min(found.default.width, 480) : 0;
     src={found.default}
     alt={`Portrait of ${site.name}`}
     width={width}
-    class:list={['h-auto w-full rounded-2xl border border-line object-cover shadow-sm', cls]}
+    class:list={['h-auto rounded-2xl border border-line object-cover shadow-sm', cls]}
     loading="eager"
     fetchpriority="high"
   />
