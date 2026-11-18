@@ -7,7 +7,7 @@ const courses = (await getCollection('teaching')).sort((a, b) => a.data.order - 
 const institutions = [...new Set(courses.map((c) => c.data.institution))];
 ---
 <BaseLayout title="Teaching" description="Courses taught by Dr. Bo Liu at Washington State University Tri-Cities and Kansas State University.">
-  <PageHeader title="Teaching" lead="Undergraduate and graduate courses in power systems and renewable energy." />
+  <PageHeader title="Teaching" lead="Courses taught at Washington State University Tri-Cities and Kansas State University." />
   <div class="container-page py-10">
     {institutions.map((inst) => (
       <section class="mb-12" aria-labelledby={inst.replace(/\W+/g, '-')}>

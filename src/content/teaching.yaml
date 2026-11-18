@@ -1,6 +1,14 @@
 # Courses taught. Course titles follow the official university catalogs.
-- id: wsu-ee-491
+- id: wsu-ee-302
   order: 1
+  institution: Washington State University Tri-Cities
+  code: EE 302
+  title: Professional Skills in Computing and Engineering
+  terms: [Fall 2025, Fall 2026]
+  role: Guest Lecturer
+
+- id: wsu-ee-491
+  order: 2
   institution: Washington State University Tri-Cities
   code: EE 491
   title: Performance of Power Systems
@@ -8,7 +16,7 @@
   role: Instructor
 
 - id: wsu-ee-492
-  order: 2
+  order: 3
   institution: Washington State University Tri-Cities
   code: EE 492
   title: Renewable Energy Sources
@@ -16,7 +24,7 @@
   role: Instructor
 
 - id: ksu-ece-681
-  order: 3
+  order: 4
   institution: Kansas State University
   code: ECE 681
   title: Wind and Solar Engineering
@@ -24,7 +32,7 @@
   role: Instructor
 
 - id: ksu-ece-885
-  order: 4
+  order: 5
   institution: Kansas State University
   code: ECE 885
   title: Power Systems Operation and Control
