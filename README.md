@@ -76,6 +76,9 @@ course; replacing the CV PDF or headshot; checking; deploying; upgrading.
 - This project runs in its **own** Node.js container instead of `container_qc`, because the
   workspace container has no Node.js and must not be modified. The site owner approved this
   on 2026-11-18.
-- AI assistance: the code, structure, and first-draft text were produced with Claude (AI).
-  WSU guidance requires the byline "Developed with Claude (AI)" and a short statement of the
-  AI's role. Both appear in the footer (`aiAttribution` and `aiRole` in `src/config.ts`); keep them.
+- **AI assistance.** Developed with Claude (AI). Claude (Anthropic) generated the site code,
+  structure, and first-draft text from Bo Liu's CV and Google Scholar profile. Bo Liu reviews
+  and is responsible for all content.
+  WSU guidance requires the byline "Developed with Claude (AI)" and a statement of the AI's role.
+  The byline is in the site footer (`aiAttribution` in `src/config.ts`); the role statement is
+  this paragraph. Keep both.

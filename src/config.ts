@@ -45,9 +45,9 @@ export const site = {
   prospectiveStudents:
     'Students interested in smart grid cybersecurity, state estimation, or power system operation are welcome to get in touch by email with a CV and a short description of their interests.',
 
-  // Required by WSU guidance for AI-assisted work: byline plus a short statement of the AI's role (shown in the footer).
+  // Required by WSU guidance for AI-assisted work: byline in the footer. The statement of the
+  // AI's role is in README.md ("AI assistance"), per the owner's choice on 2026-11-18.
   aiAttribution: 'Developed with Claude (AI)',
-  aiRole: 'Claude generated the site code and first-draft text; all content reviewed by Bo Liu.',
 };
 
 export const nav = [
