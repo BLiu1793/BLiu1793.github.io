@@ -153,7 +153,8 @@ Not done yet. When approved (Phase 4):
    `withastro/action` → `actions/deploy-pages`) and set the site address
    (`SITE_URL=https://USERNAME.github.io`).
 3. Check what will be published: `git ls-files`. `notes/` and `source_materials/` must **not**
-   appear.
+   appear. Also check that every commit uses the GitHub noreply email, not a personal or WSU
+   address: `git log --format='%ae %ce' | sort -u`.
 4. `git remote add origin …` then `git push -u origin main`.
 5. On GitHub: **Settings → Pages → Source: GitHub Actions**.
 
