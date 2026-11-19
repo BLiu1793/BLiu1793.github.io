@@ -1,6 +1,6 @@
 ---
 title: Planning and Design of Solar Canopy Systems over Kennewick Irrigation Canals
-sponsor: Washington State Department of Commerce
+sponsor: Washington State’s Climate Commitment Act
 role: Co-PI
 institution: Washington State University Tri-Cities
 period: 2025–2026
