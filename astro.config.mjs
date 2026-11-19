@@ -5,7 +5,7 @@ import sitemap from '@astrojs/sitemap';
 
 // SITE_URL is the public address of the site. It is set to the real GitHub Pages
 // address at deployment (Phase 4); the placeholder is fine for local preview.
-const site = process.env.SITE_URL || 'https://username.github.io';
+const site = process.env.SITE_URL || 'https://bliu1793.github.io';
 
 export default defineConfig({
   site,

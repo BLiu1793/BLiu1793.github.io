@@ -147,11 +147,11 @@ visitor sees the same design. To change a color, edit its value in `:root`.
 
 Not done yet. When approved (Phase 4):
 
-1. Create a public repository named `USERNAME.github.io` on GitHub. GitHub Pages on a free
-   account requires a public repository.
-2. Add the GitHub Actions workflow `.github/workflows/deploy.yml` (official
-   `withastro/action` → `actions/deploy-pages`) and set the site address
-   (`SITE_URL=https://USERNAME.github.io`).
+1. Create an empty public repository named `BLiu1793.github.io` on GitHub (no README,
+   license, or .gitignore). GitHub Pages on a free account requires a public repository.
+2. The GitHub Actions workflow `.github/workflows/deploy.yml` (official `withastro/action` →
+   `actions/deploy-pages`) is already in place, and the site address defaults to
+   `https://bliu1793.github.io` (`astro.config.mjs`).
 3. Check what will be published: `git ls-files`. `notes/` and `source_materials/` must **not**
    appear. Also check that every commit uses the GitHub noreply email, not a personal or WSU
    address: `git log --format='%ae %ce' | sort -u`.
