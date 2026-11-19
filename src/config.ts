@@ -40,6 +40,7 @@ export const site = {
   features: {
     showFundingAmounts: false, // show dollar amounts on the Research page
     showProspectiveStudents: false, // show the "Prospective students" note on the Students page
+    showOpenings: true, // show the "Openings" box on the Home page (text: src/content/openings.md)
   },
 
   prospectiveStudents:

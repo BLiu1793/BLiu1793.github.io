@@ -1,0 +1,1 @@
+There are several openings for graduate research assistants. We are looking for highly self-motivated students with a strong background in optimization, power system operation and control, and machine learning applications in cyber-physical power systems. Please send your C.V. to Dr. Liu ([bo.liu1@wsu.edu](mailto:bo.liu1@wsu.edu)) if interested.

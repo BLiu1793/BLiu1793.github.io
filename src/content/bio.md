@@ -1,3 +1,0 @@
-Bo Liu is an Assistant Professor of Electrical Engineering in the School of Engineering & Applied Sciences at Washington State University Tri-Cities. Dr. Liu's research draws on power systems, graph theory, optimization, machine learning, and state estimation to find vulnerabilities in smart grids and to build defenses against cyberattacks.
-
-Before joining WSU Tri-Cities in 2024, Dr. Liu was a Research Assistant Professor and a Postdoctoral Fellow in the Department of Electrical and Computer Engineering at Kansas State University, where Dr. Liu earned a Ph.D. in 2021 and contributed to NSF- and DOE-funded projects on smart grid cybersecurity. Dr. Liu also holds M.S. and B.S. degrees in Electrical Engineering from Harbin Institute of Technology.

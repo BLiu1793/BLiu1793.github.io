@@ -7,7 +7,7 @@ import PublicationItem from '../components/PublicationItem.astro';
 import ServiceSection from '../components/ServiceSection.astro';
 import fs from 'node:fs';
 import path from 'node:path';
-import { Content as Bio } from '../content/bio.md';
+import { Content as Openings } from '../content/openings.md';
 import { site } from '../config';
 import { getNews, getPublications } from '../lib/content';
 import { getCollection } from 'astro:content';
@@ -32,9 +32,6 @@ const hasCv = fs.existsSync(path.join(process.cwd(), 'public', cvHref));
           {site.unit}<br />
           <a href={site.institutionUrl}>{site.institution}</a>
         </p>
-        <div class="prose-lite mt-5 max-w-2xl text-fg">
-          <Bio />
-        </div>
         <div class="mt-6 flex flex-wrap gap-3">
           <a class="btn btn-primary" href={`mailto:${site.email}`}><Icon name="mail" />Email</a>
           {scholar && <a class="btn" href={scholar.url}><Icon name="scholar" />Google Scholar</a>}
@@ -44,6 +41,15 @@ const hasCv = fs.existsSync(path.join(process.cwd(), 'public', cvHref));
       </div>
     </div>
   </section>
+
+  {site.features.showOpenings && (
+    <section class="container-page pt-10" aria-labelledby="openings-heading">
+      <div class="rounded-xl border border-line border-l-4 border-l-accent bg-accent-soft px-5 py-4 sm:px-6">
+        <h2 id="openings-heading" class="text-xl font-semibold text-accent">Openings</h2>
+        <div class="prose-lite mt-2 text-fg"><Openings /></div>
+      </div>
+    </section>
+  )}
 
   <section class="container-page py-14" aria-labelledby="research-heading">
     <h2 id="research-heading" class="section-title">Research highlights</h2>

@@ -37,7 +37,7 @@ docker compose down                      # stop the preview server
 | Path | What it is |
 |---|---|
 | `src/config.ts` | Name, title, email, office, profile links, feature switches |
-| `src/content/bio.md` | Home-page biography |
+| `src/content/openings.md` | "Openings" box on the Home page (switch: `showOpenings`) |
 | `src/content/publications.yaml` | All publications (one entry per paper) |
 | `src/content/news/*.md` | News items (one file each) |
 | `src/content/research.yaml` | Research highlight cards on the Home page |

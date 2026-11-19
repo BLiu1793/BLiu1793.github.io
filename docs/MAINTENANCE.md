@@ -79,6 +79,12 @@ Edit `src/content/students.yaml`.
   (e.g. `"2024–2028"`).
 - To show a "Prospective students" note, set `showProspectiveStudents: true` in `src/config.ts`.
 
+## Openings (Home page)
+
+The "Openings" box below the introduction on the Home page shows the text in
+`src/content/openings.md` (Markdown; write a link as `[text](url)`). Edit that file to change the
+wording. To hide the box when positions are filled, set `showOpenings: false` in `src/config.ts`.
+
 ## Courses
 
 Edit `src/content/teaching.yaml`. Add a term to `terms: [...]` or add a new entry. Use the
@@ -121,9 +127,9 @@ same name (`.png` and `.webp` also work). The site compresses it and never enlar
 an original at least 600 px wide looks sharper on high-resolution screens than the current
 218 px one. If you delete the file, an initials badge appears instead.
 
-## Bio, title, contact details, profile links
+## Title, contact details, profile links
 
-- Biography: `src/content/bio.md`.
+- The Home page has no biography paragraphs (removed at the owner's request on 2026-11-18).
 - Name, title, office, address, email, research interests, profile links: `src/config.ts`.
   To hide a profile link without deleting it, set `show: false`. ORCID and LinkedIn are currently hidden.
 - Menu items: `nav` at the bottom of `src/config.ts`.
